@@ -3,7 +3,7 @@
     "position": "top",
     "modules-left": ["hyprland/workspaces"],
     "modules-center": ["clock"],
-    "modules-right": ["temperature", "cpu","battery","pulseaudio","tray"],
+    "modules-right": ["temperature", "cpu","battery","pulseaudio"],
 
     "hyprland/workspaces": {
         "format": "{icon}",
@@ -18,7 +18,7 @@
         "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
         "critical-threshold": 80,
         "warn-threshold": 50,
-        "format": "❄️ {}°C",
+        "format": " {}°C",
         "format-warn": "🌡️ {}°C",
         "format-critical": "🔥 {}°C",
         "interval": 5
@@ -58,8 +58,5 @@
         "interval": 100
     },
 
-    "tray": {
-        "spacing": 8
-    }
 }
 
