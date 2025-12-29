@@ -47,16 +47,16 @@
     },
 
     "pulseaudio": {
-        "format": "{icon} {volume}% ",
+        "format": "{icon} {volume}%",
         "format-icons": [
-            "",   // muted
-            "",   // low volume
-            ""    // medium/high volume
+            "",   // low volume
+            "",   // medium volume
+            " "    // high volume
         ],
         "tooltip": true,
         "on-click": "pavucontrol",
         "interval": 100
-    },
+    }
 
 }
 
