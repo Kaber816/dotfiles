@@ -19,8 +19,8 @@
         "critical-threshold": 80,
         "warn-threshold": 50,
         "format": " {}°C",
-        "format-warn": "🌡️ {}°C",
-        "format-critical": "🔥 {}°C",
+        "format-warn": " {}°C",
+        "format-critical": " {}°C",
         "interval": 5
     },
 
