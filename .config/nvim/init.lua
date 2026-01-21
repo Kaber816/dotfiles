@@ -6,6 +6,3 @@ require("config.keymaps")
 -- LSP
 vim.lsp.enable({ "lua_ls", "clangd" })
 
---vim.lsp.config('clangd', {
---
---})
