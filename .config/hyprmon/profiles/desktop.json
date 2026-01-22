@@ -8,7 +8,7 @@
       "Hz": 144,
       "Scale": 1,
       "X": 0,
-      "Y": -32,
+      "Y": 0,
       "Active": true,
       "EDIDName": "Microstep Optix MAG24C 0000000000001",
       "Modes": [
@@ -138,8 +138,8 @@
       "MirrorSource": "",
       "MirrorTargets": [],
       "Dragging": false,
-      "DragOffX": 1164,
-      "DragOffY": 931
+      "DragOffX": 0,
+      "DragOffY": 0
     },
     {
       "Name": "DP-6",
@@ -273,10 +273,10 @@
       "MirrorSource": "",
       "MirrorTargets": [],
       "Dragging": false,
-      "DragOffX": 345,
-      "DragOffY": 1012
+      "DragOffX": 0,
+      "DragOffY": 0
     }
   ],
   "created_at": "2025-12-25T20:26:03.118654834Z",
-  "updated_at": "2026-01-20T16:58:58.022780242-06:00"
+  "updated_at": "2026-01-22T08:49:45.693785548-06:00"
 }
