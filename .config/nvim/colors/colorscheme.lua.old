@@ -1,0 +1,81 @@
+-- eink_transparent.lua
+-- Neovim colorscheme inspired by E-Ink Dark Transparent (kitty)
+
+vim.cmd("highlight clear")
+vim.o.termguicolors = true
+vim.o.background = "dark"
+vim.g.colors_name = "eink_transparent"
+
+local c = {
+  fg       = "#C0C0C0",
+  fg_dim   = "#9A9A9A",
+  fg_muted = "#7A7A7A",
+
+  bg       = "NONE", -- IMPORTANT: transparency
+  bg_alt   = "#2A2A2A",
+
+  sel      = "#2A2A2A",
+  border   = "#3A3A3A",
+
+  red      = "#5C5C5C",
+  green    = "#8A8A8A",
+  yellow   = "#7A7A7A",
+  blue     = "#6A6A6A",
+  magenta  = "#9A9A9A",
+  cyan     = "#7E7E7E",
+  white    = "#D0D0D0",
+}
+
+local function hi(group, opts)
+  vim.api.nvim_set_hl(0, group, opts)
+end
+
+-- === Core UI ===
+hi("Normal",        { fg = c.fg, bg = c.bg })
+hi("NormalNC",      { fg = c.fg_dim, bg = c.bg })
+hi("EndOfBuffer",   { fg = c.bg })
+hi("CursorLine",    { bg = "NONE" })
+hi("CursorColumn",  { bg = "NONE" })
+hi("Visual",        { bg = c.sel })
+hi("LineNr",        { fg = c.fg_muted })
+hi("CursorLineNr",  { fg = c.fg })
+hi("SignColumn",    { bg = "NONE" })
+hi("VertSplit",     { fg = c.border })
+
+-- === Status / UI ===
+hi("StatusLine",    { fg = c.fg, bg = c.bg })
+hi("StatusLineNC",  { fg = c.fg_muted, bg = c.bg })
+hi("WinSeparator",  { fg = c.border })
+hi("Pmenu",         { fg = c.fg, bg = c.bg_alt })
+hi("PmenuSel",      { fg = c.white, bg = c.sel })
+hi("FloatBorder",   { fg = c.border, bg = "NONE" })
+hi("NormalFloat",   { bg = "NONE" })
+
+-- === Syntax ===
+hi("Comment",       { fg = c.fg_muted, italic = true })
+hi("Constant",      { fg = c.fg })
+hi("String",        { fg = c.green })
+hi("Identifier",    { fg = c.fg })
+hi("Function",      { fg = c.white })
+hi("Statement",     { fg = c.fg })
+hi("Keyword",       { fg = c.fg })
+hi("Type",          { fg = c.fg })
+hi("Operator",      { fg = c.fg })
+hi("PreProc",       { fg = c.fg_dim })
+hi("Special",       { fg = c.cyan })
+
+-- === Diagnostics ===
+hi("DiagnosticError", { fg = c.red })
+hi("DiagnosticWarn",  { fg = c.yellow })
+hi("DiagnosticInfo",  { fg = c.blue })
+hi("DiagnosticHint",  { fg = c.cyan })
+
+-- === Treesitter ===
+hi("@comment",      { fg = c.fg_muted, italic = true })
+hi("@string",       { fg = c.green })
+hi("@number",       { fg = c.fg })
+hi("@function",     { fg = c.white })
+hi("@type",         { fg = c.fg })
+hi("@keyword",      { fg = c.fg })
+hi("@operator",     { fg = c.fg })
+
