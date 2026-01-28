@@ -1,0 +1,62 @@
+{
+    "layer": "top",
+    "position": "top",
+    "modules-left": ["hyprland/workspaces"],
+    "modules-center": ["clock"],
+    "modules-right": ["temperature", "cpu","battery","pulseaudio"],
+
+    "hyprland/workspaces": {
+        "format": "{icon}",
+        "on-click": "activate"
+    },
+
+    "clock": {
+        "format": "{:%I:%M %p - %A, %m/%d/%y}"
+    },
+
+    "temperature": {
+        "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+        "critical-threshold": 80,
+        "warn-threshold": 50,
+        "format": " {}°C",
+        "format-warn": " {}°C",
+        "format-critical": " {}°C",
+        "interval": 5
+    },
+
+    "cpu": {
+        "format": " {usage}%",
+        "tooltip": true,
+        "interval": 5
+    },
+
+    "battery": {
+        "battery": "BAT0",
+        "format": "{icon} {capacity}%",
+        "format-icons": [
+            "",   // 0-20%
+            "",   // 20-40%
+            "",   // 40-60%
+            "",   // 60-80%
+            ""    // 80-100%
+        ],
+        "charging-icon": "",
+        "tooltip": true,
+        "on-low": "notify-send 'Battery low!'",
+        "low-percentage": 15
+    },
+
+    "pulseaudio": {
+        "format": "{icon} {volume}%",
+        "format-icons": [
+            "",   // low volume
+            "",   // medium volume
+            " "    // high volume
+        ],
+        "tooltip": true,
+        "on-click": "pavucontrol",
+        "interval": 100
+    }
+
+}
+
