@@ -7,12 +7,10 @@ case $selection in
 
     
     " Shutdown")
-        systemctl shutdown
-    ;;
+        systemctl poweroff
 
     " Restart")
         reboot
-    ;;
 
     "󰤄 Sleep")
         systemctl suspend --now
