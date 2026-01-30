@@ -1,0 +1,7 @@
+[user]
+	email = kadenb816@gmail.com
+	name = Kaden Berger
+[pull]
+	ff = only
+[push]
+	default = simple
