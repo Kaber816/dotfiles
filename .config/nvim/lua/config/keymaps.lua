@@ -21,3 +21,7 @@ vim.keymap.set("n", "<leader>fs", builtin.current_buffer_fuzzy_find, { desc = "S
 -- Grep only filenames (not contents)
 vim.keymap.set("n", "<leader>fd", builtin.git_files, { desc = "Git Files" })
 
+vim.keymap.set("n", "K", function()
+    vim.lsp.buf.hover({ border = "single", max_height = 25, max_width = 120 })
+end, { desc = "Hover documentation" })
+
