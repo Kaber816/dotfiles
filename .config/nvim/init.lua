@@ -6,5 +6,5 @@ require("config.keymaps")
 vim.cmd.colorscheme("colorscheme")
 
 -- LSP
-vim.lsp.enable({ "lua_ls", "clangd" })
+vim.lsp.enable({ "lua_ls", "clangd", "pylsp" })
 
