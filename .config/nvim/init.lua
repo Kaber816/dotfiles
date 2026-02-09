@@ -1,10 +1,12 @@
 -- Load plugins using lazy.nvim
 require("config.lazy")
 require("lazy").setup("plugins")
-require("config.keymaps")
 
+-- Configuration files
+require("config.keymaps")
+require("config.lsp")
+
+-- UI
 vim.cmd.colorscheme("colorscheme")
 
--- LSP
-vim.lsp.enable({ "lua_ls", "clangd", "pylsp" })
 

@@ -1,6 +1,5 @@
--- eink_transparent.lua
--- E-Ink Dark Transparent + Matcha Accents
--- based on E-Ink by Algilbert Gomez
+-- colorscheme.lua
+-- Dark Transparent + Matcha Accents
 
 vim.cmd("highlight clear")
 vim.opt.termguicolors = true
@@ -81,4 +80,20 @@ hi("@function",  { link = "Function" })
 hi("@type",      { link = "Type" })
 hi("@keyword",   { link = "Keyword" })
 hi("@operator",  { link = "Operator" })
+
+-- ======================================================
+-- Diagnostics visuals (match CMP style)
+-- ======================================================
+
+-- undercurls for severity
+hi("DiagnosticUnderlineError", { undercurl = true, sp = "#B07A7A" })
+hi("DiagnosticUnderlineWarn",  { undercurl = true, sp = c.matcha_leaf })
+hi("DiagnosticUnderlineInfo",  { undercurl = true, sp = "#6A7A8A" })
+hi("DiagnosticUnderlineHint",  { undercurl = true, sp = c.fg_muted })
+
+-- gutter icons match theme
+hi("DiagnosticSignError", { fg = "#B07A7A" })
+hi("DiagnosticSignWarn",  { fg = c.matcha_leaf })
+hi("DiagnosticSignInfo",  { fg = c.cyan })
+hi("DiagnosticSignHint",  { fg = c.fg_muted })
 

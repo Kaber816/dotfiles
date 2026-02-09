@@ -24,10 +24,10 @@ return {
       ---------------------------------------------------------------------------
       window = {
         completion = {
-          border = "rounded",
+          border = "none",
         },
         documentation = {
-          border = "rounded",
+          border = "single",
           max_width = 60,
           max_height = 15,
         },
