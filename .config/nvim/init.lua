@@ -9,4 +9,3 @@ require("config.lsp")
 -- UI
 vim.cmd.colorscheme("colorscheme")
 
-
