@@ -1,9 +1,10 @@
 # vim:ft=kitty
 
+
 # ---- Font ----
 font_family JetBrains Mono
 bold_font auto
-font_size 13
+font_size 14
 
 # ---- Cursor ----
 cursor_shape beam
