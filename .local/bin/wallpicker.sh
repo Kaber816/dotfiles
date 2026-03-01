@@ -6,7 +6,17 @@ WALL=$(ls "$WALLDIR" | wofi --dmenu -i -p "Wallpaper")
 
 [ -z "$WALL" ] && exit 0
 
-hyprctl hyprpaper wallpaper "DP-5, $WALLDIR/$WALL"
-hyprctl hyprpaper wallpaper "DP-6, $WALLDIR/$WALL"
-hyprctl hyprpaper wallpaper "eDP-1, $WALLDIR/$WALL"
+FULLPATH="$WALLDIR/$WALL"
+
+# Set wallpaper
+hyprctl hyprpaper wallpaper "DP-5, $FULLPATH"
+hyprctl hyprpaper wallpaper "DP-6, $FULLPATH"
+hyprctl hyprpaper wallpaper "eDP-1, $FULLPATH"
+
+# Generate Pywal colors (quiet mode)
+wal -i "$FULLPATH" -q
+
+# Restart waybar to set it's colors
+killall waybar
+systemctl --user start waybar
 

@@ -7,5 +7,5 @@ require("config.keymaps")
 require("config.lsp")
 
 -- UI
-vim.cmd.colorscheme("colorscheme")
+--vim.cmd.colorscheme("colorscheme")
 

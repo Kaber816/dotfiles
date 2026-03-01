@@ -1,59 +1,77 @@
+/* ========= IMPORT PYWAL COLORS ========= */
+@import url("/home/kadenb/.cache/wal/colors-waybar.css");
 
+/* ========= GLOBAL BAR ========= */
 #waybar {
-    background-color: transparent; 
-    border: none;
-    color: #474747;
+    background: transparent;
+    color: @foreground;
     font-family: "JetBrains Mono", monospace;
-    font-size: 14px
+    font-size: 14px;
 }
 
+/* ========= MODULE CONTAINERS ========= */
 .modules-left,
 .modules-center,
 .modules-right {
-    background-color: #cccccc; 
-    color: #333333;
-    padding-left: 10px;
-    padding-right: 10px;
-    margin: 5px 4px;
-    box-shadow: 0 0 0 2px #333333; 
-    border-radius: 5px 
+    background: rgba(20, 20, 20, 0.75);   /* stable dark overlay */
+    color: @foreground;
+    margin: 6px;
+    padding: 6px 14px;
+    border-radius: 12px;
+    border: none;
 }
 
+/* ========= WORKSPACES ========= */
 #workspaces button {
-    background-color: transparent;
-    color: #333333;
+    background: transparent;
+    color: @color4;
+    padding: 2px 8px;
+    margin: 0 2px;
+    border-radius: 6px;
+    transition: 0.2s ease;
+}
+
+#workspaces button:hover {
+    background: @color8;
 }
 
 #workspaces button.active {
-    padding: 2px 5px; 
-    margin: 2px 2px;
-    background-color: #333333;
-    color: #CCCCCC;
-    border: none; 
-    box-shadow: none;
+    background: @color2;
+    color: @background;
+}
+
+/* ========= MODULE PADDING ========= */
+#temperature,
+#cpu,
+#battery,
+#pulseaudio,
+#clock,
+#memory,
+#network {
+    padding: 0 10px;
+}
+
+/* ========= ACCENT COLORS ========= */
+#cpu {
+    color: @color4;
 }
 
 #temperature {
-    padding-left: 10px;
-    padding-right: 10px;
+    color: @color3;
 }
 
-#cpu {
-    padding-left: 10px;
-    padding-right: 10px;
+#temperature.critical {
+    color: @color1;
 }
 
 #battery {
-    padding-left: 10px;
-    padding-right: 10px;
+    color: @color2;
 }
 
-#pulseaudio {
-    padding-left: 10px;
-    padding-right: 10px;
+#battery.critical {
+    color: @color1;
 }
 
 #pulseaudio.muted {
-    color: #a0a0a0;            
+    color: @color8;
 }
-
