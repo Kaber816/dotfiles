@@ -17,6 +17,8 @@ hyprctl hyprpaper wallpaper "eDP-1, $FULLPATH"
 wal -i "$FULLPATH" -q
 
 # Restart waybar to set it's colors
-killall waybar
-systemctl --user start waybar
+pkill -SIGUSR2 waybar 
+
+# Update firefox
+pywalfox update
 
