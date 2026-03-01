@@ -1,7 +1,6 @@
-/* ========= IMPORT PYWAL COLORS ========= */
+/* Import pywal colors */
 @import url("/home/kadenb/.cache/wal/colors-waybar.css");
 
-/* ========= GLOBAL BAR ========= */
 #waybar {
     background: transparent;
     color: @foreground;
@@ -9,11 +8,10 @@
     font-size: 14px;
 }
 
-/* ========= MODULE CONTAINERS ========= */
 .modules-left,
 .modules-center,
 .modules-right {
-    background: rgba(20, 20, 20, 0.75);   /* stable dark overlay */
+    background: rgba(20, 20, 20, 0.75);   
     color: @foreground;
     margin: 6px;
     padding: 6px 14px;
@@ -21,10 +19,9 @@
     border: none;
 }
 
-/* ========= WORKSPACES ========= */
 #workspaces button {
     background: transparent;
-    color: @color4;
+    color: @foreground;
     padding: 2px 8px;
     margin: 0 2px;
     border-radius: 6px;
@@ -37,10 +34,11 @@
 
 #workspaces button.active {
     background: @color2;
-    color: @background;
+    color: @foreground;
 }
 
-/* ========= MODULE PADDING ========= */
+#workspace button.inactive
+
 #temperature,
 #cpu,
 #battery,
@@ -51,7 +49,6 @@
     padding: 0 10px;
 }
 
-/* ========= ACCENT COLORS ========= */
 #cpu {
     color: @color4;
 }
