@@ -81,6 +81,10 @@ wal -i "$original_path" -q
 # Restart waybar to set it's colors
 pkill -SIGUSR2 waybar 
 
+# Restart swaync to change it's colors
+pkill -SIGUSR2 swaync-client
+pkill -SIGUSR2 swaync
+
 # Update firefox
 pywalfox update
 
