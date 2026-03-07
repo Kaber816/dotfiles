@@ -9,7 +9,7 @@
 
   all: unset;
   font-size: 14px;
-  font-family: "JetBrains Mono";
+  font-family: "Inter";
   transition: 200ms;
 
 }

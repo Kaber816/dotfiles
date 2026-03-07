@@ -1,7 +1,6 @@
-/* E-Ink Dark Transparent Wofi Theme */
 
 * {
-  font-family: JetBrains Mono;
+  font-family: Inter;
   font-size: 14px;
 }
 
@@ -65,6 +64,10 @@ window {
 /* Text */
 #text {
   color: inherit;
+}
+
+*:focus {
+    outline: none;
 }
 
 /* Hide scrollbar visually */
