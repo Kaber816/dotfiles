@@ -48,23 +48,23 @@
 }
 
 #cpu {
-    color: @color4;
+    color: @foreground;
 }
 
 #temperature {
-    color: @color3;
+    color: @foreground;
 }
 
 #temperature.critical {
-    color: @color1;
+    color: @foreground;
 }
 
 #battery {
-    color: @color2;
+    color: @foreground;
 }
 
 #battery.critical {
-    color: @color1;
+    color: @foreground;
 }
 
 #pulseaudio.muted {

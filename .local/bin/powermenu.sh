@@ -1,7 +1,7 @@
 #!/bin/bash
 
 options=" Shutdown\n Restart\n󰤄 Sleep\n Lock\n"
-selection=$(echo -e $options | wofi --dmenu -j -W 10% -H 20%)
+selection=$(echo -e $options | wofi --dmenu -j -W 10% -H 20% --confg ~/.config/wofi/powermenu.conf)
 
 case $selection in
 
