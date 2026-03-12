@@ -37,8 +37,6 @@
     color: @foreground;
 }
 
-#workspace button.inactive
-
 #temperature,
 #cpu,
 #battery,
