@@ -65,7 +65,7 @@
     "format": "{icon} {text}",
     "format-icons": {
         "notification": "",
-        "none": "",
+        "none": "",
         "dnd-notification": "",
         "dnd-none": "",
         "inhibited-notification": "",
