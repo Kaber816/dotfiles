@@ -1,9 +1,10 @@
 {
     "layer": "top",
     "position": "top",
+
     "modules-left": ["hyprland/workspaces"],
     "modules-center": ["clock"],
-    "modules-right": ["temperature", "cpu","battery","pulseaudio", "custom/swaync"],
+    "modules-right": ["temperature", "cpu", "battery", "pulseaudio", "custom/swaync"],
 
     "hyprland/workspaces": {
         "format": "{icon}",
@@ -34,52 +35,52 @@
 
     "battery": {
         "battery": "BAT0",
+        "interval": 60,
+        "states": {
+            "critical": 15
+        },
+        "events": {
+            "on-discharging-critical": "notify-send -u critical 'Very Low Battery'"
+        },
         "format": "{icon} {capacity}%",
         "format-icons": [
-            "",   // 0-20%
-            "",   // 20-40%
-            "",   // 40-60%
-            "",   // 60-80%
-            ""    // 80-100%
-        ],
-        "charging-icon": "",
-        "tooltip": true,
-        "on-low": "notify-send 'Battery low!'",
-        "low-percentage": 15
+            "",
+            "",
+            "",
+            "",
+            ""
+        ]
     },
 
     "pulseaudio": {
         "format": "{icon} {volume}%",
         "format-icons": [
-            "",   // low volume
-            "",   // medium volume
-            " "    // high volume
+            "",
+            "",
+            ""
         ],
         "tooltip": true,
-        "on-click": "pavucontrol",
-        "interval": 100
+        "on-click": "pavucontrol"
     },
 
-"custom/swaync": {
-    "tooltip": true,
-    "format": "{icon} {text}",
-    "format-icons": {
-        "notification": "",
-        "none": "",
-        "dnd-notification": "",
-        "dnd-none": "",
-        "inhibited-notification": "",
-        "inhibited-none": "",
-        "dnd-inhibited-notification": "",
-        "dnd-inhibited-none": ""
-    },
-    "return-type": "json",
-    "exec-if": "which swaync-client",
-    "exec": "swaync-client -swb",
-    "on-click": "sleep 0.1 && swaync-client -t -sw",
-    "on-click-right": "swaync-client -d -sw",
-    "escape": true
-},
-
+    "custom/swaync": {
+        "tooltip": true,
+        "format": "{icon} {text}",
+        "format-icons": {
+            "notification": "",
+            "none": "",
+            "dnd-notification": "",
+            "dnd-none": "",
+            "inhibited-notification": "",
+            "inhibited-none": "",
+            "dnd-inhibited-notification": "",
+            "dnd-inhibited-none": ""
+        },
+        "return-type": "json",
+        "exec-if": "which swaync-client",
+        "exec": "swaync-client -swb",
+        "on-click": "sleep 0.1 && swaync-client -t -sw",
+        "on-click-right": "swaync-client -d -sw",
+        "escape": true
+    }
 }
-

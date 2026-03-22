@@ -11,7 +11,7 @@
 .modules-left,
 .modules-center,
 .modules-right {
-    background: rgba(20, 20, 20, 0.75);   
+    background: rgba(20, 20, 20, 0.75);
     color: @foreground;
     margin: 6px;
     padding: 6px 14px;
