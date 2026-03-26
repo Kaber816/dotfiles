@@ -37,12 +37,12 @@ vim.keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>", { desc = "Toggle file tr
 -----------------------
 
 -- Move between buffers
-vim.keymap.set("n", "<S-l>", "<Cmd>BufferNext<CR>", { desc = "Next buffer" })
-vim.keymap.set("n", "<S-h>", "<Cmd>BufferPrevious<CR>", { desc = "Prev buffer" })
+vim.keymap.set("n", "<A-l>", "<Cmd>BufferNext<CR>", { desc = "Next buffer" })
+vim.keymap.set("n", "<A-h>", "<Cmd>BufferPrevious<CR>", { desc = "Prev buffer" })
 
 -- Reorder buffers
-vim.keymap.set("n", "<A-l>", "<Cmd>BufferMoveNext<CR>", { desc = "Move buffer right" })
-vim.keymap.set("n", "<A-h>", "<Cmd>BufferMovePrevious<CR>", { desc = "Move buffer left" })
+vim.keymap.set("n", "<S-l>", "<Cmd>BufferMoveNext<CR>", { desc = "Move buffer right" })
+vim.keymap.set("n", "<S-h>", "<Cmd>BufferMovePrevious<CR>", { desc = "Move buffer left" })
 
 -- Close buffer
 vim.keymap.set("n", "<leader>c", "<Cmd>BufferClose<CR>", { desc = "Close buffer" })
