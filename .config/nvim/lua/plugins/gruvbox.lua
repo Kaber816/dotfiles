@@ -16,7 +16,7 @@ return {
             },
             strikethrough = true,
 
-            contrast = "hard", -- "soft", "medium", "hard"
+            contrast = "soft", -- "soft", "medium", "hard"
 
             dim_inactive = false,
             transparent_mode = false, -- set true if you want transparent background
