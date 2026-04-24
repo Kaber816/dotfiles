@@ -43,7 +43,7 @@ selected=$(generate_menu | wofi --show dmenu \
     --sort-order=default \
     --prompt "Select Wallpaper" \
     --conf ~/.config/wofi/wallpicker.conf\
-    --style ~/.config/wofi/wallpicker_style.css
+    --style ~/.config/wofi/wallpicker.css
   )
 
 # Set wallpaper if one was selected

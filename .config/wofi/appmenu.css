@@ -1,6 +1,6 @@
 
 * {
-  font-family: Inter;
+  font-family: "Inter";
   font-size: 14px;
 }
 
@@ -74,5 +74,4 @@ window {
 scrollbar {
   opacity: 0;
 }
-
 

@@ -1,7 +1,3 @@
-show=drun
-prompt=Search Apps
-allow_images=true
-image_size=32
 width=600
 location=center
 no_actions=true
