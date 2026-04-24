@@ -4,7 +4,7 @@
 #waybar {
     background: transparent;
     color: @foreground;
-    font-family: "JetBrainsMono Nerd Font", monospace;
+    font-family: "JetBrainsMono Nerd Font";
     font-size: 14px;
 }
 
