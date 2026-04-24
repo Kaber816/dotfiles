@@ -11,3 +11,6 @@ PS1='[\u@\h \W]\$ '
 alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
 
 (cat ~/.cache/wal/sequences &)
+
+export PATH="$PATH:/usr/lib/qt6/bin" 
+

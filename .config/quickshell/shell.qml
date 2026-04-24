@@ -12,4 +12,6 @@ FloatingWindow {
         color: "#0db9d7"
         font.pixelSize: 18
     }
+
+    
 }
