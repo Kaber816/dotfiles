@@ -1,5 +1,7 @@
 import Quickshell
 import QtQuick
+import QtQuick.Layouts
+import qs.modules.bar.components
 
 Scope {
 
@@ -19,9 +21,16 @@ Scope {
 
             implicitHeight: 30
 
-            ClockWidget {
-                anchors.centerIn: parent
-                color: "#C7C2C2"
+            RowLayout {
+                anchors.fill: parent
+                anchors.margins: 10
+                spacing: 10
+                
+                Item { Layout.fillWidth: true  }
+
+                ClockWidget { 
+                    color: "#C7C2C2" 
+                }
             }
         }
     }
