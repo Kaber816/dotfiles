@@ -27,7 +27,8 @@ xwayland {
 ################
 
 # See https://wiki.hypr.land/Configuring/Monitors/
-monitor=eDP-1,1920x1280@60.00,0x0,1.25
+monitor=DP-5,1920x1080@144.00,0x0,1.00
+monitor=DP-6,1920x1080@144.00,1920x0,1.00
 
 
 ###################
@@ -39,7 +40,7 @@ monitor=eDP-1,1920x1280@60.00,0x0,1.25
 # Set programs that you use
 $terminal = kitty
 $fileManager = dolphin
-$menu = wofi --show drun
+$menu = wofi --show drun --conf ~/.config/wofi/appmenu.conf --style ~/.config/wofi/appmenu.css
 env = XDG_MENU_PREFIX,arch-
 # $menu = hyprlauncher
 
@@ -96,7 +97,7 @@ env = HYPRCURSOR_SIZE,24
 # https://wiki.hypr.land/Configuring/Variables/#general
 general {
     gaps_in = 5
-    gaps_out = 20
+    gaps_out = 10
 
     border_size = 2
 
