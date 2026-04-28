@@ -5,6 +5,7 @@ import qs.modules.bar.components
 import qs.theme
 
 Scope {
+    id: root
 
     Variants {
         model: Quickshell.screens
@@ -13,7 +14,7 @@ Scope {
             required property var modelData
             screen: modelData
 
-            color: "transparent"
+            color: "transparent" // This is so we can use rounded rectangle edges
 
             anchors {
                 top: true
@@ -21,19 +22,22 @@ Scope {
                 right: true
             }
 
-            implicitHeight: 50
+            implicitHeight: 40
 
-            Rectangle {
-                anchors.fill: parent
-                anchors.margins: 6
+            Rectangle { // Allows for rounded bar by using transparent panelWindow (still need panelWindow to reserve space)
+                anchors.fill: parent // Fill the panelWindow
                 radius: 10
                 color: Theme.background
 
                 RowLayout {
                     anchors.fill: parent
-                    anchors.margins: 9
-                    spacing: 10
 
+                    Rectangle {
+                        radius: 10
+                        width: 50
+                        height: 40
+                        color: "#FFFFFF"
+                    }
 
                     ClockWidget {
                         color: Theme.foreground
