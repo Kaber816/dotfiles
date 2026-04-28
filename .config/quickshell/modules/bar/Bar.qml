@@ -2,6 +2,7 @@ import Quickshell
 import QtQuick
 import QtQuick.Layouts
 import qs.modules.bar.components
+import qs.theme
 
 Scope {
 
@@ -11,7 +12,8 @@ Scope {
         PanelWindow {
             required property var modelData
             screen: modelData
-            color: Qt.rgba(0.07, 0.07, 0.07, 0.83)
+
+            color: "transparent"
 
             anchors {
                 top: true
@@ -19,17 +21,25 @@ Scope {
                 right: true
             }
 
-            implicitHeight: 30
+            implicitHeight: 50
 
-            RowLayout {
+            Rectangle {
                 anchors.fill: parent
-                anchors.margins: 10
-                spacing: 10
-                
-                Item { Layout.fillWidth: true  }
+                anchors.margins: 6
+                radius: 10
+                color: Theme.background
 
-                ClockWidget { 
-                    color: "#C7C2C2" 
+                RowLayout {
+                    anchors.fill: parent
+                    anchors.margins: 9
+                    spacing: 10
+
+
+                    ClockWidget {
+                        color: Theme.foreground
+                        Layout.fillHeight: false
+                        Layout.alignment: Qt.AlignRight
+                    }
                 }
             }
         }

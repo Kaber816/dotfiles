@@ -1,6 +1,8 @@
 import QtQuick
+import qs.theme
 
 Text {
     text: Time.time //  Directly accesses the time property from the Time singleton
-    font.family: "Inter Nerd Font"
+    font.family: Theme.fontFamily
+    font.pixelSize: 14
 }
