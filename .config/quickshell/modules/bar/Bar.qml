@@ -31,16 +31,10 @@ Scope {
 
                 RowLayout {
                     anchors.fill: parent
-
-                    Rectangle {
-                        radius: 10
-                        width: 50
-                        height: 40
-                        color: "#FFFFFF"
-                    }
+                    
+                    Workspaces {}
 
                     ClockWidget {
-                        color: Theme.foreground
                         Layout.fillHeight: false
                         Layout.alignment: Qt.AlignRight
                     }
