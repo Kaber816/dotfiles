@@ -10,7 +10,7 @@ QtObject {
         property int title: 22
     }
 
-    property var pywal: Pywal
+    property var wal: Pywal
     property color background: Qt.rgba(0.07, 0.07, 0.07, 0.83)
     property color foreground: "#C7C2C2"
     property string fontFamily: "JetBrains Mono Nerd Font"
