@@ -30,9 +30,8 @@ Scope {
                 color: Theme.background
 
                 RowLayout {
-                    anchors.fill: parent
-                    
-                    Workspaces {}
+                    anchors.fill: parent // Make the layout take up the whole top bar
+                    anchors.rightMargin: 10
 
                     ClockWidget {
                         Layout.fillHeight: false
