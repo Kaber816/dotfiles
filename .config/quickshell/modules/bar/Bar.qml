@@ -32,8 +32,8 @@ Scope {
                 ShapePath {
                     fillColor: Theme.background
                     strokeWidth: 4
-                    strokeColor: Theme.wal.color2
-
+                    strokeColor: "#FFFFFF"
+ 
                     startX: 0; startY: 0
 
                     PathLine { x: width; y: 0 }
