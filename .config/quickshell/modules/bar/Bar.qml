@@ -32,7 +32,7 @@ Scope {
                 ShapePath {
                     fillColor: Theme.background
                     strokeWidth: 4
-                    strokeColor: "#FFFFFF"
+                    strokeColor: Theme.wal.colors.color1
  
                     startX: 0; startY: 0
 
