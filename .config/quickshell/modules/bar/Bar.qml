@@ -28,12 +28,13 @@ Scope {
             Shape {
                 width: parent.width
                 height: parent.height
+                preferredRendererType: Shape.CurveRenderer
 
                 ShapePath {
-                    fillColor: Theme.background
-                    strokeWidth: 4
-                    strokeColor: Theme.wal.colors.color1
- 
+                    fillColor: Theme.wal.colors.color10
+                    strokeWidth: 2
+                    strokeColor: Theme.wal.special.foreground
+
                     startX: 0; startY: 0
 
                     PathLine { x: width; y: 0 }

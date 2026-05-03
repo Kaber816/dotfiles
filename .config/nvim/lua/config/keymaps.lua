@@ -16,13 +16,13 @@ vim.keymap.set("n", "<leader>fb", builtin.buffers, { desc = "Buffers" })
 -- Search help tags
 vim.keymap.set("n", "<leader>fh", builtin.help_tags, { desc = "Help" })
 
--- Recent files (really useful)
+-- Recent files
 vim.keymap.set("n", "<leader>fo", builtin.oldfiles, { desc = "Recent Files" })
 
 -- Search in current buffer
 vim.keymap.set("n", "<leader>fs", builtin.current_buffer_fuzzy_find, { desc = "Search in Buffer" })
 
--- Grep only filenames (not contents)
+-- Grep only filenames
 vim.keymap.set("n", "<leader>fd", builtin.git_files, { desc = "Git Files" })
 
 --------------------------
