@@ -14,16 +14,14 @@ Scope {
         PanelWindow {
             required property var modelData
             screen: modelData
-
             color: "transparent" // This is so we can use rounded rectangle edges
+            implicitHeight: 80
 
-            anchors {
+            anchors { 
                 top: true
                 left: true
-                right: true
+                right: true 
             }
-
-            implicitHeight: 80
 
             Shape {
                 width: parent.width
