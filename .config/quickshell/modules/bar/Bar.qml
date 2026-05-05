@@ -12,11 +12,10 @@ Scope {
         model: Quickshell.screens
 
         PanelWindow {
-            required property var modelData
+            required property ShellScreen modelData
             screen: modelData
             color: "transparent" // This is so we can use rounded rectangle edges
             implicitHeight: 80
-
             anchors { 
                 top: true
                 left: true
@@ -29,7 +28,7 @@ Scope {
                 preferredRendererType: Shape.CurveRenderer
 
                 ShapePath {
-                    fillColor: Theme.wal.colors.color10
+                    fillColor: Theme.wal.colors.color8
                     strokeWidth: 2
                     strokeColor: Theme.wal.special.foreground
 
