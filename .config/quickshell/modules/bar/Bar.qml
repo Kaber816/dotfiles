@@ -28,7 +28,7 @@ Scope {
                 preferredRendererType: Shape.CurveRenderer
 
                 ShapePath {
-                    fillColor: Theme.background
+                    fillColor: Qt.darker(Theme.wal.colors.color8, 5.0)
                     strokeWidth: 0
                     strokeColor: Theme.foreground
 
@@ -53,7 +53,9 @@ Scope {
                 }
             }
 
-            Rectangle { // Allows for rounded bar by using transparent panelWindow (still need panelWindow to reserve space)
+            // Allows for rounded bar by using transparent panelWindow (still need panelWindow to reserve space),
+            //shape is for drawing actual bar with rounded corners
+            Rectangle { 
                 width: parent.width
                 anchors.top: parent.top
 
