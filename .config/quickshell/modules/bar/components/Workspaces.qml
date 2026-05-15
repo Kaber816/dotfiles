@@ -1,55 +1,38 @@
 import QtQuick
 import QtQuick.Layouts
-import Quickshell
+import Quickshell.Hyprland
 import qs.theme
 
 RowLayout {
     id: root
-    spacing: 6
 
-    // 🔑 get the active monitor from PanelWindow context
-    property var HyprlandWorkspace
+    required property var monitor
 
     Repeater {
-        model: monitor ? monitor.workspaces : []
+        model: Hyprland.workspaces.values
+            .filter(workspace => workspace.monitor?.name === root.monitor.name && workspace.id > 0)
+            .sort((a, b) => a.id - b.id)
 
-        delegate: Rectangle {
+        Rectangle {
             required property var modelData
-            property var ws: modelData
+            property bool isActive: modelData.active
 
-            implicitWidth: 28
-            implicitHeight: 28
-            radius: 8
-
-            color: ws.active
-                ? Theme.ui.selectedBackground
-                : "transparent"
-
-            border.width: 1
-            border.color: ws.active
-                ? Theme.ui.selectedBackground
-                : Theme.ui.border
-
-            // ✨ smooth transitions (optional but nice)
-            Behavior on color {
-                ColorAnimation { duration: 120 }
-            }
+            width: 32
+            height: 28
+            radius: 6
+            color: isActive ? Theme.wal.colors.color2 : "transparent"
 
             Text {
                 anchors.centerIn: parent
-                text: ws.id
+                text: modelData.id
+                color: Theme.wal.special.foreground
                 font.family: Theme.fontFamily
                 font.pixelSize: Theme.font.normal
 
-                color: ws.active
-                    ? Theme.colors.background
-                    : Theme.colors.foreground
-            }
-
-            // 🖱 click to switch workspace
-            MouseArea {
-                anchors.fill: parent
-                onClicked: ws.activate()
+                font {
+                    pixelSize: 16
+                    bold: true
+                }
             }
         }
     }

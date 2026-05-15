@@ -79,7 +79,7 @@ if [ -n "$selected" ]; then
 fi
 
 # Generate Pywal colors (quiet mode)
-wal -i "$original_path" -q
+wal -i "$original_path" -q 
 
 # Restart waybar to set it's colors
 pkill -SIGUSR2 waybar 

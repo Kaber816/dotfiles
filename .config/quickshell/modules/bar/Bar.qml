@@ -28,9 +28,9 @@ Scope {
                 preferredRendererType: Shape.CurveRenderer
 
                 ShapePath {
-                    fillColor: Theme.wal.colors.color8
-                    strokeWidth: 2
-                    strokeColor: Theme.wal.special.foreground
+                    fillColor: Theme.background
+                    strokeWidth: 0
+                    strokeColor: Theme.foreground
 
                     startX: 0; startY: 0
 
@@ -63,14 +63,19 @@ Scope {
                 RowLayout {
                     anchors {
                         fill: parent
-                        rightMargin: 10
-                        leftMargin: 10
+                        leftMargin: 20
+                        rightMargin: 20
+                    }
+
+                    Workspaces {
+                        monitor: modelData
+                        Layout.fillHeight: false
                     }
 
                     ClockWidget {
                         Layout.fillHeight: false
-                        Layout.alignment: Qt.AlignCenter
                     }
+
                 }
             }
         }

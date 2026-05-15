@@ -14,6 +14,7 @@
 ------------------
 
 -- See https://wiki.hypr.land/Configuring/Basics/Monitors/
+
 hl.monitor({
     output   = "DP-5",
     mode     = "1920x1080@144",
@@ -56,7 +57,6 @@ local menu        = "wofi --show drun --conf ~/.config/wofi/appmenu.conf --style
 -- Or execute your favorite apps at launch like this:
 
 hl.on("hyprland.start", function () 
-  hl.exec_cmd(terminal)
   hl.exec_cmd("nm-applet")
   hl.exec_cmd("waybar & hyprpaper")
   hl.exec_cmd("wal -R -q")
@@ -88,8 +88,8 @@ hl.env("XDG_MENU_PREFIX", "-arch")
 --   },
 -- })
 
--- hl.permission("/usr/(bin|local/bin)/grim", "screencopy", "allow")
--- hl.permission("/usr/(lib|libexec|lib64)/xdg-desktop-portal-hyprland", "screencopy", "allow")
+hl.permission("/usr/(bin|local/bin)/grim", "screencopy", "allow")
+hl.permission("/usr/(lib|libexec|lib64)/xdg-desktop-portal-hyprland", "screencopy", "allow")
 -- hl.permission("/usr/(bin|local/bin)/hyprpm", "plugin", "allow")
 
 
@@ -220,7 +220,7 @@ hl.config({
 
 hl.config({
     misc = {
-        force_default_wallpaper = -1,    -- Set to 0 or 1 to disable the anime mascot wallpapers
+        force_default_wallpaper = 0,    -- Set to 0 or 1 to disable the anime mascot wallpapers
         disable_hyprland_logo   = false, -- If true disables the random hyprland logo / anime girl background. :(
     },
 })
