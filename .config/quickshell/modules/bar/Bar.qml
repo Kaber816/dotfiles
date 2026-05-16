@@ -67,16 +67,18 @@ Scope {
                         fill: parent
                         leftMargin: 20
                         rightMargin: 20
+                        centerIn: parent
                     }
 
                     Workspaces {
                         monitor: modelData
-                        Layout.fillHeight: false
                     }
 
                     ClockWidget {
                         Layout.fillHeight: false
+                        Layout.alignment: Qt.AlignCenter
                     }
+
 
                 }
             }
