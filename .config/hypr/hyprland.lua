@@ -61,6 +61,7 @@ hl.on("hyprland.start", function ()
   hl.exec_cmd("waybar & hyprpaper")
   hl.exec_cmd("wal -R -q")
   hl.exec_cmd("sleep 2 && ~/.local/bin/restore_wallpaper.sh")
+  hl.exec_cmd("dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP")
 end)
 
 -------------------------------
