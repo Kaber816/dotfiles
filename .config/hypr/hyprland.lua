@@ -30,6 +30,13 @@ hl.monitor({
 })
 
 hl.monitor({
+    output   = "eDP-1",
+    mode     = "preferred",
+    position = "1920x0",
+    scale    = "1.25",
+})
+
+hl.monitor({
     output   = "",
     mode     = "preffered",
     position = "auto",
@@ -244,7 +251,7 @@ hl.config({
         sensitivity = 0, -- -1.0 - 1.0, 0 means no modification.
 
         touchpad = {
-            natural_scroll = false,
+            natural_scroll = true,
         },
     },
 })
