@@ -5,10 +5,8 @@ import Quickshell.Wayland
 import qs.theme
 
 Item {
+    id: root
     anchors.fill: parent
-    clip: false
-
-    property real curveRadius: 40
 
     property color walColor:
         Theme.wal?.colors?.color8 ?? "#444444"
@@ -16,20 +14,17 @@ Item {
     property color bgColor:
         Qt.darker(walColor, 5.0)
 
+    property int topBarHeight: 40
+
     Shape {
         id: bgShape
 
-        anchors {
-            top: parent.top
-            left: parent.left
-            right: parent.right
-        }
+        anchors.fill: parent
 
-        height: 80
         preferredRendererType: Shape.CurveRenderer
 
         ShapePath {
-            fillColor: bgColor
+            fillColor: root.bgColor
 
             strokeWidth: 0
             strokeColor: Theme.foreground
@@ -38,39 +33,85 @@ Item {
             startY: 0
 
             PathLine {
-                x: bgShape.width
+                x: root.parent.width
                 y: 0
             }
 
             PathLine {
-                x: bgShape.width
-                y: bgShape.height
-            }
-
-            PathQuad {
-                x: bgShape.width - curveRadius
-                y: bgShape.height - curveRadius
-
-                controlX: bgShape.width
-                controlY: bgShape.height - curveRadius
+                x: root.parent.width
+                y: root.parent.height
             }
 
             PathLine {
-                x: curveRadius
-                y: bgShape.height - curveRadius
+                x: root.parent.width
+                y: root.parent.height
             }
 
-            PathQuad {
+            PathLine {
                 x: 0
-                y: bgShape.height
-
-                controlX: 0
-                controlY: bgShape.height - curveRadius
+                y: root.parent.height
             }
 
             PathLine {
                 x: 0
                 y: 0
+            }
+            
+            PathMove {
+                x: 20
+                y: root.topBarHeight
+            }
+
+            PathLine {
+                x: root.parent.width - 20
+                y: root.topBarHeight
+            }
+
+            PathQuad {
+                x: root.parent.width - 10
+                y: root.topBarHeight + 10
+
+                controlX: root.parent.width - 10
+                controlY: root.topBarHeight
+            }
+
+            PathLine {
+                x: root.parent.width - 10 
+                y: root.parent.height - 20
+            }
+
+            PathQuad {
+                x: root.parent.width - 20
+                y: root.parent.height - 10
+                
+                controlX: root.parent.width - 10
+                controlY: root.parent.height - 10
+            }
+
+            PathLine {
+                x: 20
+                y: root.parent.height - 10
+            }
+
+            PathQuad {
+                x: 10
+                y: root.parent.height - 20
+
+                controlX: 10
+                controlY: root.parent.height - 10
+            }
+
+            PathLine {
+                x: 10
+                y: root.topBarHeight + 10
+            }
+
+            PathQuad {
+                x: 20
+                y: root.topBarHeight
+
+                controlX:10
+                controlY: root.topBarHeight 
             }
         }
     }
