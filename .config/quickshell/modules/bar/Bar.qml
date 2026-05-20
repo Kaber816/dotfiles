@@ -1,82 +1,69 @@
+// Bar.qml
 import Quickshell
 import QtQuick
 import QtQuick.Layouts
-import QtQuick.Shapes
+import Quickshell.Wayland
 import qs.modules.bar.components
 import qs.theme
+import qs.modules.visuals
 
 Scope {
     id: root
-
     Variants {
         model: Quickshell.screens
 
-        PanelWindow {
+        // Wrap both windows in a Scope so they share one modelData per screen
+        Scope {
             required property ShellScreen modelData
-            screen: modelData
-            color: "transparent" // This is so we can use rounded rectangle edges
-            implicitHeight: 80
-            anchors { 
-                top: true
-                left: true
-                right: true 
-            }
 
-            Shape {
-                preferredRendererType: Shape.CurveRenderer
-
-                ShapePath {
-                    fillColor: Qt.darker(Theme.wal.colors.color8, 5.0)
-                    strokeWidth: 0
-                    strokeColor: Theme.foreground
-
-                    startX: 0; startY: 0
-
-                    PathLine { x: width; y: 0 }
-                    PathLine { x: width; y: height }
-                    PathQuad { 
-                        x: width - 40 
-                        y: height - 40
-                        controlX: width
-                        controlY: height - 40
-                    }
-                    PathLine { x: 40; y: height - 40 }
-                    PathQuad { 
-                        x: 0 
-                        y: height
-                        controlX: 0
-                        controlY: height - 40
-                    }
-                    PathLine { x: 0; y: 0 }
-                }
-            }
-
-            // Allows for rounded bar by using transparent panelWindow (still need panelWindow to reserve space),
-            //shape is for drawing actual bar with rounded corners
-            Rectangle { 
-                width: parent.width
-                anchors.top: parent.top
-
-                implicitHeight: 40
+            PanelWindow {
+                screen: modelData
                 color: "transparent"
+                WlrLayershell.layer: WlrLayer.Bottom
+                WlrLayershell.exclusionMode: ExclusionMode.Ignore
+                anchors {
+                    top: true
+                    left: true
+                    right: true
+                    bottom: true
+                }
+                Visuals {}
+            }
+
+            PanelWindow {
+                screen: modelData
+                color: "transparent"
+                implicitHeight: 40
+                WlrLayershell.layer: WlrLayer.Top
+
+                anchors {
+                    top: true
+                    left: true
+                    right: true
+                }
 
                 RowLayout {
-                    anchors {
-                        fill: parent
-                        leftMargin: 20
-                        rightMargin: 20
+                    anchors.fill: parent
+                    anchors.leftMargin: 20
+                    anchors.rightMargin: 20
+                    Item {
+                        Layout.fillWidth: true
+                        Layout.fillHeight: true
+                        Workspaces {
+                            anchors.verticalCenter: parent.verticalCenter
+                            monitor: modelData
+                        }
                     }
-
-                    Workspaces {
-                        monitor: modelData
+                    Item {
+                        Layout.fillHeight: true
+                        ClockWidget {
+                            anchors.centerIn: parent
+                        }
                     }
-
-                    ClockWidget {
-                        Layout.fillHeight: false
-                        Layout.alignment: Qt.AlignCenter
+                    Item {
+                        Layout.fillWidth: true
+                        Layout.fillHeight: true
                     }
-
-
                 }
             }
         }
