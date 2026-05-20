@@ -23,8 +23,6 @@ Scope {
             }
 
             Shape {
-                width: parent.width
-                height: parent.height
                 preferredRendererType: Shape.CurveRenderer
 
                 ShapePath {
@@ -67,7 +65,6 @@ Scope {
                         fill: parent
                         leftMargin: 20
                         rightMargin: 20
-                        centerIn: parent
                     }
 
                     Workspaces {
