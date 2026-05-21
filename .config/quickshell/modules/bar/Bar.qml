@@ -1,4 +1,3 @@
-// Bar.qml
 import Quickshell
 import QtQuick
 import QtQuick.Layouts
@@ -12,12 +11,12 @@ Scope {
     Variants {
         model: Quickshell.screens
 
-        // Wrap both windows in a Scope so they share one modelData per screen
         Scope {
-            id: screen
+            id: barScope
             required property ShellScreen modelData
-            property var borderWidth: 15
-            // Visual Panel Window for top and other bars, just draws the shape around the screen
+            property int borderWidth: 15
+            property int topBarHeight: 45
+
             PanelWindow {
                 screen: modelData
                 color: "transparent"
@@ -31,21 +30,17 @@ Scope {
                 }
                 Visuals {}
             }
-            
-            // Top Bar Space Reserving and Content
+
             PanelWindow {
                 screen: modelData
                 color: "transparent"
-                implicitHeight: 45
+                implicitHeight: barScope.topBarHeight
                 WlrLayershell.layer: WlrLayer.Top
-                
                 anchors {
                     top: true
                     left: true
                     right: true
                 }
-                
-                // Top Bar RowLayout
                 RowLayout {
                     anchors.fill: parent
                     anchors.leftMargin: 20
@@ -70,14 +65,12 @@ Scope {
                     }
                 }
             }
-            
-            // Right side bar content and space reservation
+
             PanelWindow {
                 screen: modelData
                 color: "transparent"
-                implicitWidth: screen.borderWidth
+                implicitWidth: barScope.borderWidth
                 WlrLayershell.layer: WlrLayer.Top
-
                 anchors {
                     top: true
                     bottom: true
@@ -85,13 +78,11 @@ Scope {
                 }
             }
 
-            // Left side bar content and space reservation
             PanelWindow {
                 screen: modelData
                 color: "transparent"
-                implicitWidth: screen.borderWidth
+                implicitWidth: barScope.borderWidth
                 WlrLayershell.layer: WlrLayer.Top
-
                 anchors {
                     top: true
                     bottom: true
@@ -99,21 +90,17 @@ Scope {
                 }
             }
 
-            // Bottom bar content and space reservation
             PanelWindow {
                 screen: modelData
                 color: "transparent"
-                implicitHeight: screen.borderWidth
+                implicitHeight: barScope.borderWidth
                 WlrLayershell.layer: WlrLayer.Top
-
                 anchors {
                     bottom: true
                     left: true
                     right: true
                 }
             }
-
-
         }
     }
 }
