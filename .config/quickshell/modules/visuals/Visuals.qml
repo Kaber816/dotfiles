@@ -16,10 +16,15 @@ Item {
     property int cornerRadius: 10
     property int br: borderWidth + cornerRadius
 
-    // Gap tuning (where top bar curves down to meet side border)
+    // Gap tuning
+    property int gapCenterOffset: 600  // distance from center to each gap
     property int gapInset: 40
     property int gapHandle: 80
     property int gapHandleOuter: 90
+
+    // Derived gap positions
+    property int gapLeft: (root.parent.width / 2) - gapCenterOffset
+    property int gapRight: (root.parent.width / 2) + gapCenterOffset
 
     // Island tuning
     property int islandHalfWidth: 190
@@ -40,21 +45,21 @@ Item {
 
             // Top edge left section up to gap
             PathLine {
-                x: (root.parent.width / 4) - gapInset
+                x: gapLeft - gapInset
                 y: 0
             }
 
             // Gap curve down-left
             PathQuad {
-                x: (root.parent.width / 4) - gapHandle
+                x: gapLeft - gapHandle
                 y: root.topBarHeight - cornerRadius
-                controlX: (root.parent.width / 4) - gapHandle
+                controlX: gapLeft - gapHandle
                 controlY: 0
             }
             PathQuad {
-                x: (root.parent.width / 4) - gapHandleOuter
+                x: gapLeft - gapHandleOuter
                 y: root.topBarHeight
-                controlX: (root.parent.width / 4) - gapHandle
+                controlX: gapLeft - gapHandle
                 controlY: root.topBarHeight
             }
 
@@ -116,21 +121,21 @@ Item {
 
             // Inner top edge right
             PathLine {
-                x: (root.parent.width * (3 / 4)) + gapHandleOuter
+                x: gapRight + gapHandleOuter
                 y: root.topBarHeight
             }
 
             // Gap curve up-right
             PathQuad {
-                x: (root.parent.width * (3 / 4)) + gapHandle
+                x: gapRight + gapHandle
                 y: root.topBarHeight - cornerRadius
-                controlX: (root.parent.width * (3 / 4)) + gapHandle
+                controlX: gapRight + gapHandle
                 controlY: root.topBarHeight
             }
             PathQuad {
-                x: (root.parent.width * (3 / 4)) + gapInset
+                x: gapRight + gapInset
                 y: 0
-                controlX: (root.parent.width * (3 / 4)) + gapHandle
+                controlX: gapRight + gapHandle
                 controlY: 0
             }
 

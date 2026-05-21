@@ -39,7 +39,7 @@ Item { id: root
                     radius: 7
 
                     color: isActive
-                        ? Theme.wal.colors.color2
+                        ? Qt.darker(Theme.wal.colors.color2, 1.3)
                         : "transparent"
 
                     opacity: isActive ? 1.0 : 0.65

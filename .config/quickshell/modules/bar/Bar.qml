@@ -14,8 +14,9 @@ Scope {
 
         // Wrap both windows in a Scope so they share one modelData per screen
         Scope {
+            id: screen
             required property ShellScreen modelData
-            
+            property var borderWidth: 15
             // Visual Panel Window for top and other bars, just draws the shape around the screen
             PanelWindow {
                 screen: modelData
@@ -35,9 +36,9 @@ Scope {
             PanelWindow {
                 screen: modelData
                 color: "transparent"
-                implicitHeight: 40
+                implicitHeight: 45
                 WlrLayershell.layer: WlrLayer.Top
-
+                
                 anchors {
                     top: true
                     left: true
@@ -74,7 +75,7 @@ Scope {
             PanelWindow {
                 screen: modelData
                 color: "transparent"
-                implicitWidth: 10
+                implicitWidth: screen.borderWidth
                 WlrLayershell.layer: WlrLayer.Top
 
                 anchors {
@@ -88,7 +89,7 @@ Scope {
             PanelWindow {
                 screen: modelData
                 color: "transparent"
-                implicitWidth: 10
+                implicitWidth: screen.borderWidth
                 WlrLayershell.layer: WlrLayer.Top
 
                 anchors {
@@ -102,7 +103,7 @@ Scope {
             PanelWindow {
                 screen: modelData
                 color: "transparent"
-                implicitHeight: 10
+                implicitHeight: screen.borderWidth
                 WlrLayershell.layer: WlrLayer.Top
 
                 anchors {
