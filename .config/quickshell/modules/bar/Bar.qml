@@ -35,7 +35,7 @@ Scope {
             PanelWindow {
                 screen: modelData
                 color: "transparent"
-                implicitHeight: 40
+                implicitHeight: 45
                 WlrLayershell.layer: WlrLayer.Top
 
                 anchors {

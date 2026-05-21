@@ -12,7 +12,7 @@ Item { id: root
     Rectangle {
         anchors.verticalCenter: parent.verticalCenter
         width: workspaceRow.implicitWidth + 20 // Make it 20 px wider than the width of the rectangles to contain them
-        height: 30
+        height: 35
         radius: 10
         color: Qt.darker(Theme.wal.colors.color8, 2.5)
 
@@ -34,8 +34,8 @@ Item { id: root
                     required property var modelData
                     property bool isActive: modelData.active
 
-                    width: 30
-                    height: 24
+                    width: 33
+                    height: 27
                     radius: 7
 
                     color: isActive
