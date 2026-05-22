@@ -3,40 +3,44 @@ import QtQuick.Layouts
 import qs.theme
 import Quickshell.Io
 
-RowLayout {
-    spacing: 6
+Item {
+    implicitWidth: row.implicitWidth
+    implicitHeight: row.implicitHeight
 
-    Text {
-        text: {
-            if (Volume.isMuted) return ""
-            if (Volume.volumeLevel === 0) return ""
-            if (Volume.volumeLevel < 33) return ""
-            if (Volume.volumeLevel < 66) return ""
-            return ""
-        }
-        color: Theme.foreground
-        font.family: Theme.fontFamily
-        font.pixelSize: Theme.font.normal
-        Layout.alignment: Qt.AlignVCenter
-    }
-
-    Text {
-        text: Volume.isMuted ? "muted" : Volume.volumeLevel + "%"
-        color: Theme.foreground
-        font.family: Theme.fontFamily
-        font.pixelSize: Theme.font.normal
-        Layout.alignment: Qt.AlignVCenter
-    }
-    
-    Item {
-        MouseArea {
-            anchors.fill: parent
-            onClicked: launchProcess.running = true
-        }
+    MouseArea {
+        anchors.fill: parent
+        cursorShape: Qt.PointingHandCursor
+        onClicked: launchProcess.running = true
     }
 
     Process {
         id: launchProcess
         command: ["pwvucontrol"]
+    }
+
+    RowLayout {
+        id: row
+        spacing: 6
+
+        Text {
+            text: {
+                if (Volume.isMuted) return ""
+                if (Volume.volumeLevel < 10) return ""
+                if (Volume.volumeLevel < 50) return ""
+                return ""
+            }
+            color: Theme.foreground
+            font.family: Theme.fontFamily
+            font.pixelSize: Theme.font.normal
+            Layout.alignment: Qt.AlignVCenter
+        }
+
+        Text {
+            text: Volume.isMuted ? "muted" : Volume.volumeLevel + "%"
+            color: Theme.foreground
+            font.family: Theme.fontFamily
+            font.pixelSize: Theme.font.normal
+            Layout.alignment: Qt.AlignVCenter
+        }
     }
 }

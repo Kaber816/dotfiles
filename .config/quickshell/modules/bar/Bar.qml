@@ -4,13 +4,11 @@ import QtQuick.Layouts
 import Quickshell.Wayland
 import qs.modules.bar.components
 import qs.theme
-import qs.modules.visuals
 
 Scope {
     id: root
     Variants {
         model: Quickshell.screens
-
         Scope {
             id: barScope
             required property ShellScreen modelData
@@ -41,15 +39,16 @@ Scope {
                     left: true
                     right: true
                 }
+
                 RowLayout {
                     anchors.fill: parent
                     anchors.leftMargin: 20
                     anchors.rightMargin: 20
 
+                    // Left
                     Item {
                         Layout.fillWidth: true
                         Layout.fillHeight: true
-
                         Workspaces {
                             anchors.left: parent.left
                             anchors.verticalCenter: parent.verticalCenter
@@ -57,27 +56,39 @@ Scope {
                         }
                     }
 
+                    // Center
                     Item {
                         Layout.fillWidth: true
                         Layout.fillHeight: true
-                    
                         ClockWidget {
-                            anchors.centerIn: parent 
+                            anchors.centerIn: parent
                         }
                     }
 
+                    // Right
                     Item {
                         Layout.fillWidth: true
                         Layout.fillHeight: true
 
-                        RowLayout {
+                        Rectangle {
+                            id: systemGroup
                             anchors.right: parent.right
                             anchors.verticalCenter: parent.verticalCenter
-                            spacing: 20
-                            
-                            CpuWidget {}
-                            AudioWidget {}
+                            height: 35
+                            radius: 10
+                            color: Qt.darker(Theme.wal.colors.color8, 2.5)
+                            implicitWidth: groupRow.implicitWidth + 20
 
+                            RowLayout {
+                                id: groupRow
+                                anchors.centerIn: parent
+                                anchors.horizontalCenterOffset: 3
+                                spacing: 12
+                                
+                                CpuTempWidget {}
+                                CpuUsageWidget {}
+                                AudioWidget {}
+                            }
                         }
                     }
                 }

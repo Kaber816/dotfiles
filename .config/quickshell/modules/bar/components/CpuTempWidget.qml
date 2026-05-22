@@ -6,7 +6,11 @@ RowLayout {
     spacing: 6
 
     Text {
-        text: ""
+        text: {
+            if (CpuTemp.cpuTemp < 50) return ""
+            if (CpuTemp.cpuTemp < 75) return ""
+            return ""
+        }
         color: Theme.foreground
         font.family: Theme.fontFamily
         font.pixelSize: Theme.font.normal
@@ -14,7 +18,7 @@ RowLayout {
     }
 
     Text {
-        text: Cpu.cpuUsage + "%"
+        text: CpuTemp.cpuTemp + "°C"
         color: Theme.foreground
         font.family: Theme.fontFamily
         font.pixelSize: Theme.font.normal
