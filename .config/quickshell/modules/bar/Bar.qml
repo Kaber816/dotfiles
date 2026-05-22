@@ -1,4 +1,4 @@
-import Quickshell
+import Quickshell 
 import QtQuick
 import QtQuick.Layouts
 import Quickshell.Wayland
@@ -45,23 +45,40 @@ Scope {
                     anchors.fill: parent
                     anchors.leftMargin: 20
                     anchors.rightMargin: 20
+
                     Item {
                         Layout.fillWidth: true
                         Layout.fillHeight: true
+
                         Workspaces {
+                            anchors.left: parent.left
                             anchors.verticalCenter: parent.verticalCenter
                             monitor: modelData
                         }
                     }
-                    Item {
-                        Layout.fillHeight: true
-                        ClockWidget {
-                            anchors.centerIn: parent
-                        }
-                    }
+
                     Item {
                         Layout.fillWidth: true
                         Layout.fillHeight: true
+                    
+                        ClockWidget {
+                            anchors.centerIn: parent 
+                        }
+                    }
+
+                    Item {
+                        Layout.fillWidth: true
+                        Layout.fillHeight: true
+
+                        RowLayout {
+                            anchors.right: parent.right
+                            anchors.verticalCenter: parent.verticalCenter
+                            spacing: 20
+                            
+                            CpuWidget {}
+                            AudioWidget {}
+
+                        }
                     }
                 }
             }

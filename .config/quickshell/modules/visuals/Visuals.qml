@@ -13,22 +13,15 @@ Item {
     property int cornerRadius: 8
     property int br: borderWidth + cornerRadius
 
-    // Light/dark detection from wal background
-    property color color0: Theme.wal?.colors?.color0 ?? "#000000"
-    property bool isLight: {
-        let r = color0.r * 0.299
-        let g = color0.g * 0.587
-        let b = color0.b * 0.114
-        return (r + g + b) > 0.5
-    }
-
-    property color tintSource: isLight
-        ? (Theme.wal?.colors?.color7 ?? "#ffffff")
-        : (Theme.wal?.colors?.color1 ?? "#111111")
+    property color lightThreshold: "#1d0c0b"
+    property color color0: Theme.wal.colors.color0 ?? "#000000"
+    property color thresholdColor: lightThreshold
+    property bool isLight: color0 > lightThreshold
 
     property color bgColor: isLight
-        ? Qt.tint("#ffffff", Qt.rgba(tintSource.r, tintSource.g, tintSource.b, 0.15))
-        : Qt.tint("#101010", Qt.rgba(tintSource.r, tintSource.g, tintSource.b, 0.25))
+        ? Qt.darker(Theme.wal.colors.color6, 1.0) ?? "#ffffff"
+        : Qt.darker(Theme.wal.colors.color4, 4.0) ?? "#111111" 
+    
 
     Shape {
         id: bgShape
