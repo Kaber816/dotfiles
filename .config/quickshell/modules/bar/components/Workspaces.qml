@@ -14,7 +14,7 @@ Item { id: root
         width: workspaceRow.implicitWidth + 20 // Make it 20 px wider than the width of the rectangles to contain them
         height: 35
         radius: 10
-        color: Qt.darker(Theme.wal.colors.color8, 2.5)
+        color: Theme.backgroundSecondary
 
 
         RowLayout {
@@ -39,7 +39,7 @@ Item { id: root
                     radius: 7
 
                     color: isActive
-                        ? Qt.darker(Theme.wal.colors.color2, 1.3)
+                        ? Theme.accent
                         : "transparent"
 
                     opacity: isActive ? 1.0 : 0.65
@@ -58,7 +58,7 @@ Item { id: root
                     Text {
                         anchors.centerIn: parent
                         text: modelData.id
-                        color: Theme.wal.special.foreground
+                        color: Theme.foreground
                         font.family: Theme.fontFamily
                         font.pixelSize: 16
                         font.bold: true

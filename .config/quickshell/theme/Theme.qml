@@ -10,10 +10,7 @@ QtObject {
         property int title: 22
     }
     
-    property color background: Qt.rgba(0.07, 0.07, 0.07, 0.83)
-    property color foreground: "#C7C2C2"
     property string fontFamily: "JetBrains Mono Nerd Font"
-
 
     // ------------------
     // PYWAL COLOR LOADER
@@ -55,4 +52,30 @@ QtObject {
         }
     }
     property var wal: pywal.adapter
+
+    // --------------------
+    // LIGHT/DARK DETECTION
+    // --------------------
+
+
+    property color lightThreshold: "#1d0c0b" // This is tuned from some of my light backgrounds
+    property color color0: Theme.wal.colors.color0 ?? "#000000" // Easiest to check for light/dark
+    property bool isLight: color0 > lightThreshold
+
+    property color background: isLight
+        ? Qt.darker(Theme.wal.colors.color6, 0.53) ?? "#ffffff"
+        : Qt.darker(Theme.wal.colors.color8, 4.0) ?? "#111111" 
+
+    property color backgroundSecondary: isLight
+        ? Qt.darker(Theme.wal.colors.color6, 0.60)
+        : Qt.darker(Theme.wal.colors.color8, 2.0)
+
+    property color foreground: isLight
+    ? "#303030"
+    : "#C0C0C0"
+
+    property color accent: Qt.darker(Theme.wal.colors.color4, 1.1)
+    
+
+
 }

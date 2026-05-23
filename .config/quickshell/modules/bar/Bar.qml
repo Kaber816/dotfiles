@@ -12,8 +12,8 @@ Scope {
         Scope {
             id: barScope
             required property ShellScreen modelData
-            property int borderWidth: 15
-            property int topBarHeight: 45
+            property int borderWidth: 12
+            property int topBarHeight: 40
 
             PanelWindow {
                 screen: modelData
@@ -76,7 +76,7 @@ Scope {
                             anchors.verticalCenter: parent.verticalCenter
                             height: 35
                             radius: 10
-                            color: Qt.darker(Theme.wal.colors.color8, 2.5)
+                            color: Theme.backgroundSecondary
                             implicitWidth: groupRow.implicitWidth + 20
 
                             RowLayout {
