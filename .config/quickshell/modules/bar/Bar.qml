@@ -13,7 +13,7 @@ Scope {
             id: barScope
             required property ShellScreen modelData
             property int borderWidth: 12
-            property int topBarHeight: 40
+            property int topBarHeight: 45
 
             PanelWindow {
                 screen: modelData
@@ -26,7 +26,7 @@ Scope {
                     right: true
                     bottom: true
                 }
-                Visuals {}
+                Background {}
             }
 
             PanelWindow {
@@ -69,26 +69,9 @@ Scope {
                     Item {
                         Layout.fillWidth: true
                         Layout.fillHeight: true
-
-                        Rectangle {
-                            id: systemGroup
+                        StatusGroup {
                             anchors.right: parent.right
                             anchors.verticalCenter: parent.verticalCenter
-                            height: 35
-                            radius: 10
-                            color: Theme.backgroundSecondary
-                            implicitWidth: groupRow.implicitWidth + 20
-
-                            RowLayout {
-                                id: groupRow
-                                anchors.centerIn: parent
-                                anchors.horizontalCenterOffset: 3
-                                spacing: 12
-                                
-                                CpuTempWidget {}
-                                CpuUsageWidget {}
-                                AudioWidget {}
-                            }
                         }
                     }
                 }

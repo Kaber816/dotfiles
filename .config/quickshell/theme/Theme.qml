@@ -7,7 +7,7 @@ QtObject {
         property int small: 12
         property int normal: 14
         property int large: 18
-        property int title: 22
+        property int title: 28
     }
     
     property string fontFamily: "JetBrains Mono Nerd Font"
@@ -67,15 +67,17 @@ QtObject {
         : Qt.darker(Theme.wal.colors.color8, 4.0) ?? "#111111" 
 
     property color backgroundSecondary: isLight
-        ? Qt.darker(Theme.wal.colors.color6, 0.60)
-        : Qt.darker(Theme.wal.colors.color8, 2.0)
+        ? Qt.darker(Theme.wal.colors.color6, 0.8)
+        : Qt.darker(Theme.wal.colors.color8, 1.4)
 
     property color foreground: isLight
     ? "#303030"
     : "#C0C0C0"
 
-    property color accent: Qt.darker(Theme.wal.colors.color4, 1.1)
-    
+    property color foregroundInverse: isLight
+    ? "#C0C0C0"
+    : "#303030"
 
+    property color accent: Qt.darker(Theme.wal.colors.color4, 1.12)
 
 }

@@ -65,8 +65,9 @@ local menu        = "wofi --show drun --conf ~/.config/wofi/appmenu.conf --style
 
 hl.on("hyprland.start", function () 
   hl.exec_cmd("nm-applet")
-  hl.exec_cmd("qs & hyprpaper")
+  hl.exec_cmd("hyprpaper")
   hl.exec_cmd("wal -R -q")
+  hl.exec_cmd("sleep 2 && qs")
   hl.exec_cmd("sleep 2 && ~/.local/bin/restore_wallpaper.sh")
   hl.exec_cmd("dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP")
 end)
@@ -79,7 +80,7 @@ end)
 
 hl.env("XCURSOR_SIZE", "24")
 hl.env("HYPRCURSOR_SIZE", "24")
-hl.env("XDG_MENU_PREFIX", "-arch")
+hl.env("XDG_MENU_PREFIX", "arch-")
 
 
 -----------------------

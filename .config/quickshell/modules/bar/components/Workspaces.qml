@@ -30,7 +30,9 @@ Item { id: root
                     )
                     .sort((a, b) => a.id - b.id)
 
+
                 Rectangle {
+                    id: rectangle
                     required property var modelData
                     property bool isActive: modelData.active
 
@@ -52,6 +54,15 @@ Item { id: root
                         NumberAnimation {
                             duration: 90
                             easing.type: Easing.OutQuad
+                        }
+                    }
+
+                    MouseArea {
+                        anchors.fill: parent
+                        cursorShape: Qt.PointingHandCursor    
+                        onClicked: {
+                            Hyprland.dispatch("hl.dsp.focus({ workspace = " + rectangle.modelData.id + "})")
+
                         }
                     }
 

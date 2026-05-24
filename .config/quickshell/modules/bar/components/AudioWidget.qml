@@ -22,19 +22,30 @@ Item {
         id: row
         spacing: 6
 
-        Text {
-            text: {
-                if (Volume.isMuted) return ""
-                if (Volume.volumeLevel < 10) return ""
-                if (Volume.volumeLevel < 50) return ""
-                return ""
-            }
-            color: Theme.foreground
-            font.family: Theme.fontFamily
-            font.pixelSize: Theme.font.normal
-            Layout.alignment: Qt.AlignVCenter
-        }
+        Rectangle {
+            width: 25
+            height: 25
+            radius: width / 2
+            color: Theme.accent
 
+            Text {
+                anchors.centerIn: parent
+                anchors.verticalCenterOffset: 0
+                anchors.horizontalCenterOffset: 0.1
+
+                text: {
+                    if (Volume.isMuted) return ""
+                    if (Volume.volumeLevel < 10) return ""
+                    if (Volume.volumeLevel < 50) return ""
+                    return ""
+                }
+                color: Theme.foreground
+                font.family: Theme.fontFamily
+                font.pixelSize: Theme.font.normal
+                Layout.alignment: Qt.AlignVCenter
+            }
+        }
+        
         Text {
             text: Volume.isMuted ? "muted" : Volume.volumeLevel + "%"
             color: Theme.foreground
@@ -42,5 +53,6 @@ Item {
             font.pixelSize: Theme.font.normal
             Layout.alignment: Qt.AlignVCenter
         }
+       
     }
 }

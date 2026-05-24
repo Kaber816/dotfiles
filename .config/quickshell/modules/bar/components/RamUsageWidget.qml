@@ -26,13 +26,8 @@ RowLayout {
         Text {
             anchors.centerIn: parent
             anchors.verticalCenterOffset: 0
-            anchors.horizontalCenterOffset: -0.5
-
-            text: {
-                if (CpuTemp.cpuTemp < 50) return ""
-                if (CpuTemp.cpuTemp < 75) return ""
-                return ""
-            }
+            anchors.horizontalCenterOffset: 0.4
+            text: ""
             color: Theme.foreground
             font.family: Theme.fontFamily
             font.pixelSize: Theme.font.normal
@@ -43,10 +38,11 @@ RowLayout {
 
 
     Text {
-        text: CpuTemp.cpuTemp + "°C"
+        text: RamUsage.ramUsage + "GB"
         color: Theme.foreground
         font.family: Theme.fontFamily
         font.pixelSize: Theme.font.normal
         Layout.alignment: Qt.AlignVCenter
     }
 }
+
