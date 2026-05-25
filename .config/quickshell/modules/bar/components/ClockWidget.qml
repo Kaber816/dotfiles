@@ -1,9 +1,59 @@
 import QtQuick
 import qs.theme
+import QtQuick.Layouts
 
-Text {
-    text: Time.time //  Directly accesses the time property from the Time singleton
-    color: Theme.foreground
-    font.family: Theme.fontFamily
-    font.pixelSize: Theme.font.normal
+Item {
+    implicitWidth: row.implicitWidth
+    implicitHeight: row.implicitHeight
+
+    MouseArea {
+        anchors.fill: parent
+        cursorShape: Qt.PointingHandCursor
+        //onClicked: launchProcess.running = true
+    }
+
+    RowLayout {
+        id: row
+        spacing: 8
+        anchors.centerIn: parent
+
+        Text {
+            text: Weather.icon + " " + Weather.temperature
+            color: Theme.foreground
+            font.family: Theme.fontFamily
+            font.pixelSize: Theme.font.normal
+        }
+
+        Text {
+            text: "|"
+            color: Theme.foreground
+            opacity: 0.4
+            font.family: Theme.fontFamily
+            font.pixelSize: Theme.font.normal
+        }
+
+        Text {
+            text: Time.time
+            color: Theme.foreground
+            font.family: Theme.fontFamily
+            font.pixelSize: Theme.font.normal
+        }
+
+        Text {
+            text: "|"
+            color: Theme.foreground
+            opacity: 0.4
+            font.family: Theme.fontFamily
+            font.pixelSize: Theme.font.normal
+        }
+
+        Text {
+            text: Time.date
+            color: Theme.foreground
+            font.family: Theme.fontFamily
+            font.pixelSize: Theme.font.normal
+        }
+
+    }
+
 }

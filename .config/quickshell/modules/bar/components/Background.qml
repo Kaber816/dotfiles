@@ -19,7 +19,7 @@ Item {
         preferredRendererType: Shape.CurveRenderer
 
         ShapePath {
-            fillColor: Theme.background
+            fillColor: Qt.alpha(Theme.background, 0.90)
             strokeWidth: 0
             strokeColor: "transparent"
 
@@ -31,72 +31,73 @@ Item {
             PathLine { x: 0; y: root.parent.height }
             PathLine { x: 0; y: 0 }
 
-            PathMove { x: br; y: root.topBarHeight }
+            PathMove { x: root.br; y: root.topBarHeight }
 
-            PathLine { x: root.parent.width - br; y: root.topBarHeight }
+            PathLine { x: root.parent.width - root.br; y: root.topBarHeight }
             PathQuad {
-                x: root.parent.width - borderWidth
-                y: root.topBarHeight + cornerRadius
-                controlX: root.parent.width - borderWidth
+                x: root.parent.width - root.borderWidth
+                y: root.topBarHeight + root.cornerRadius
+                controlX: root.parent.width - root.borderWidth
                 controlY: root.topBarHeight
             }
-            PathLine { x: root.parent.width - borderWidth; y: root.parent.height - br }
+            PathLine { x: root.parent.width - root.borderWidth; y: root.parent.height - br }
             PathQuad {
-                x: root.parent.width - br
-                y: root.parent.height - borderWidth
-                controlX: root.parent.width - borderWidth
-                controlY: root.parent.height - borderWidth
+                x: root.parent.width - root.br
+                y: root.parent.height - root.borderWidth
+                controlX: root.parent.width - root.borderWidth
+                controlY: root.parent.height - root.borderWidth
             }
-            PathLine { x: br; y: root.parent.height - borderWidth }
+            PathLine { x: root.br; y: root.parent.height - root.borderWidth }
             PathQuad {
-                x: borderWidth
-                y: root.parent.height - br
-                controlX: borderWidth
-                controlY: root.parent.height - borderWidth
+                x: root.borderWidth
+                y: root.parent.height - root.br
+                controlX: root.borderWidth
+                controlY: root.parent.height - root.borderWidth
             }
-            PathLine { x: borderWidth; y: root.topBarHeight + cornerRadius }
+            PathLine { x: root.borderWidth; y: root.topBarHeight + root.cornerRadius }
             PathQuad {
-                x: br
+                x: root.br
                 y: root.topBarHeight
-                controlX: borderWidth
+                controlX: root.borderWidth
                 controlY: root.topBarHeight
             }
         }
-
+        
+        // Accent color that goes around inside part of border
         ShapePath {
             fillColor: "transparent"
-            strokeWidth: 2
+            strokeWidth: 1.5
             strokeColor: Theme.accent
 
-            startX: br
+            startX: root.br
             startY: root.topBarHeight
 
-            PathLine { x: root.parent.width - br; y: root.topBarHeight }
+            PathLine { x: root.parent.width - root.br; y: root.topBarHeight }
             PathQuad {
-                x: root.parent.width - borderWidth
-                y: root.topBarHeight + cornerRadius
-                controlX: root.parent.width - borderWidth
+                x: root.parent.width - root.borderWidth
+                y: root.topBarHeight + root.cornerRadius
+                controlX: root.parent.width - root.borderWidth
                 controlY: root.topBarHeight
             }
-            PathLine { x: root.parent.width - borderWidth; y: root.parent.height - br }
+            PathLine { x: root.parent.width - root.borderWidth; y: root.parent.height - root.br }
             PathQuad {
-                x: root.parent.width - br
-                y: root.parent.height - borderWidth
-                controlX: root.parent.width - borderWidth
-                controlY: root.parent.height - borderWidth
+                x: root.parent.width - root.br
+                y: root.parent.height - root.borderWidth
+                controlX: root.parent.width - root.borderWidth
+                controlY: root.parent.height - root.borderWidth
             }
-            PathLine { x: br; y: root.parent.height - borderWidth }
+            PathLine { x: root.br; y: root.parent.height - root.borderWidth }
             PathQuad {
-                x: borderWidth
-                y: root.parent.height - br
-                controlX: borderWidth
-                controlY: root.parent.height - borderWidth
+                x: root.borderWidth
+                y: root.parent.height - root.br
+                controlX: root.borderWidth
+                controlY: root.parent.height - root.borderWidth
             }
-            PathLine { x: borderWidth; y: root.topBarHeight + cornerRadius }
+            PathLine { x: root.borderWidth; y: root.topBarHeight + root.cornerRadius }
             PathQuad {
-                x: br
+                x: root.br
                 y: root.topBarHeight
-                controlX: borderWidth
+                controlX: root.borderWidth
                 controlY: root.topBarHeight
             }
         }
