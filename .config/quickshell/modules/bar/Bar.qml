@@ -3,6 +3,7 @@ import QtQuick
 import QtQuick.Layouts
 import Quickshell.Wayland
 import qs.modules.bar.components
+import qs.modules.bar.popouts
 import qs.theme
 
 Scope {
@@ -29,6 +30,7 @@ Scope {
                 Background {}
             }
 
+            // Top bar reservation and contents
             PanelWindow {
                 screen: modelData
                 color: "transparent"
@@ -41,11 +43,12 @@ Scope {
                 }
 
                 RowLayout {
+                    id: topBarRow
                     anchors.fill: parent
                     anchors.leftMargin: 20
                     anchors.rightMargin: 20
 
-                    // Left
+                    // Left item
                     Item {
                         Layout.fillWidth: true
                         Layout.fillHeight: true
@@ -56,7 +59,7 @@ Scope {
                         }
                     }
 
-                    // Center
+                    // Center item
                     Item {
                         Layout.fillWidth: true
                         Layout.fillHeight: true
@@ -65,7 +68,7 @@ Scope {
                         }
                     }
 
-                    // Right
+                    // Right item
                     Item {
                         Layout.fillWidth: true
                         Layout.fillHeight: true
@@ -76,7 +79,8 @@ Scope {
                     }
                 }
             }
-
+            
+            // Right bar reservation
             PanelWindow {
                 screen: modelData
                 color: "transparent"
@@ -88,7 +92,8 @@ Scope {
                     right: true
                 }
             }
-
+            
+            // Left bar reservation
             PanelWindow {
                 screen: modelData
                 color: "transparent"
@@ -101,6 +106,7 @@ Scope {
                 }
             }
 
+            // Bottom bar reservation
             PanelWindow {
                 screen: modelData
                 color: "transparent"
