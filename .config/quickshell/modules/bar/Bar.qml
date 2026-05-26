@@ -16,6 +16,7 @@ Scope {
             property int borderWidth: 12
             property int topBarHeight: 45
 
+            // Background and Popouts
             PanelWindow {
                 screen: modelData
                 color: "transparent"
@@ -28,6 +29,14 @@ Scope {
                     bottom: true
                 }
                 Background {}
+                TopPopout {
+                    anchors {
+                        top: parent.top
+                        topMargin: barScope.topBarHeight
+                        horizontalCenter: parent.horizontalCenter
+                    }
+                    expanded: centerHover.hovered
+                }
             }
 
             // Top bar reservation and contents
@@ -59,10 +68,15 @@ Scope {
                         }
                     }
 
-                    // Center item
+                    // Center item — hover here triggers the popout
                     Item {
                         Layout.fillWidth: true
                         Layout.fillHeight: true
+
+                        HoverHandler {
+                            id: centerHover
+                        }
+
                         ClockWidget {
                             anchors.centerIn: parent
                         }
@@ -79,7 +93,7 @@ Scope {
                     }
                 }
             }
-            
+
             // Right bar reservation
             PanelWindow {
                 screen: modelData
@@ -92,7 +106,7 @@ Scope {
                     right: true
                 }
             }
-            
+
             // Left bar reservation
             PanelWindow {
                 screen: modelData
