@@ -19,7 +19,8 @@ Item {
         preferredRendererType: Shape.CurveRenderer
 
         ShapePath {
-            fillColor: Qt.alpha(Theme.background, 0.90)
+            //fillColor: Qt.alpha(Theme.background, 0.90)
+            fillColor: Theme.background
             strokeWidth: 0
             strokeColor: "transparent"
 

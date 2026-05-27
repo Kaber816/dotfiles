@@ -14,46 +14,22 @@ Item {
     width: 600
     height: expandedHeight + cr
 
-    Rectangle {
-        id: containerRectangle
-
-        anchors.horizontalCenter: parent.horizontalCenter
-
-        radius: 20
-        color: Theme.background
-
-        width: 600
-        height: root.expanded ? root.expandedHeight : 0
-
-        clip: true
-
-        Behavior on height {
-            NumberAnimation {
-                duration: root.expanded ? 80 : 300
-                easing.type: root.expanded ? Easing.OutCubic : Easing.InCubic
-            }
-        }
-    }
-
     Shape {
         id: inverseCorners
 
         anchors.fill: containerRectangle
         preferredRendererType: Shape.CurveRenderer
+        visible: containerRectangle.height >= root.cr
 
         // Top-left inverse corner
         ShapePath {
             fillColor: Theme.background
-            strokeWidth: 0
-            strokeColor: "transparent"
+            strokeWidth: 1.5
+            strokeColor: Theme.accent
 
-            startX: -root.cr
-            startY: 0
-
+            startX: -root.cr; startY: 0
             PathLine { x: root.cr + 10; y: 0 }
-
             PathLine { x: 0; y: root.cr }
-
             PathQuad {
                 x: -root.cr
                 y: 0
@@ -65,22 +41,18 @@ Item {
         // Top-right inverse corner
         ShapePath {
             fillColor: Theme.background
-            strokeWidth: 0
-            strokeColor: "transparent"
+            strokeWidth: 1.5
+            strokeColor: Theme.accent
 
-            startX: containerRectangle.width + root.cr
-            startY: 0
-
+            startX: containerRectangle.width + root.cr; startY: 0
             PathLine {
                 x: containerRectangle.width - root.cr - 10
                 y: 0
             }
-
             PathLine {
                 x: containerRectangle.width
                 y: root.cr
             }
-
             PathQuad {
                 x: containerRectangle.width + root.cr
                 y: 0
@@ -89,4 +61,27 @@ Item {
             }
         }
     }
+
+    Rectangle {
+        id: containerRectangle
+
+        anchors.horizontalCenter: parent.horizontalCenter
+        radius: 20
+        color: Theme.background
+        border.color: Theme.accent
+        border.width: 1.5
+        width: 600
+        clip: true
+
+        height: root.expanded ? root.expandedHeight : 0
+
+        Behavior on height {
+            NumberAnimation {
+                duration: 300
+                easing.type: root.expanded ? Easing.OutCubic : Easing.InCubic
+            }
+        }
+
+    }
+
 }
