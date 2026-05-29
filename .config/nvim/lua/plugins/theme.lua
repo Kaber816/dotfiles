@@ -37,7 +37,7 @@ return {
 --        priority = 1000,
 --
 --        opts = {
---            transparent_background = true,
+--            transparent_background = false,
 --            dim_inactive = true,
 --            show_split_lines = true,
 --            show_end_of_buffer = false,
