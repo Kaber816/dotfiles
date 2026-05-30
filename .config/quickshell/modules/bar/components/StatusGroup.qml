@@ -15,7 +15,8 @@ Rectangle {
         anchors.centerIn: parent
         anchors.horizontalCenterOffset: 2
         spacing: 12
-        
+
+        BatteryWidget {}
         RamUsageWidget {}
         CpuTempWidget {}
         CpuUsageWidget {}
