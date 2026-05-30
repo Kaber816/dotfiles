@@ -10,8 +10,8 @@ Singleton {
     Process {
         id: tempProcess
         command: ["sh", "-c", `
-            # Try AMD k10temp first
-            temp=$(sensors 2>/dev/null | grep -A1 'k10temp' | grep 'Tctl' | awk '{print $2}' | tr -d '+°C')
+            # Try AMD k10temp (desktop often uses Tccd1 or temp1, laptop uses Tctl)
+            temp=$(sensors 2>/dev/null | grep -A5 'k10temp' | grep -E 'Tctl|Tccd1|temp1' | head -1 | awk '{print $2}' | tr -d '+°C')
             # Try Intel coretemp
             if [ -z "$temp" ]; then
                 temp=$(sensors 2>/dev/null | grep 'Package id 0' | awk '{print $4}' | tr -d '+°C')
