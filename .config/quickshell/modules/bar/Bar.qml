@@ -16,26 +16,53 @@ Scope {
             property int borderWidth: 12
             property int topBarHeight: 45
 
-            // Background and Popouts
+            // Background
             PanelWindow {
                 screen: modelData
                 color: "transparent"
                 WlrLayershell.layer: WlrLayer.Bottom
                 WlrLayershell.exclusionMode: ExclusionMode.Ignore
+
                 anchors {
                     top: true
                     left: true
                     right: true
                     bottom: true
                 }
+
                 Background {}
+
+            }
+            
+            // Popouts
+            PanelWindow {
+                screen: modelData
+                color: "transparent"
+                WlrLayershell.layer: WlrLayer.Top
+                WlrLayershell.exclusionMode: ExclusionMode.Ignore
+
+                anchors {
+                    top: true
+                    left: true
+                    right: true
+                    bottom: true
+                }
+
+                mask: Region {
+                    x: topPopout.x
+                    y: topPopout.y
+                    width: topPopout.expanded ? topPopout.width: 0
+                    height: topPopout.expanded ? topPopout.height : 0
+                }
+
                 TopPopout {
+                    id: topPopout
                     anchors {
                         top: parent.top
                         topMargin: barScope.topBarHeight
                         horizontalCenter: parent.horizontalCenter
                     }
-                    expanded: centerHover.hovered
+                    expanded: centerHover.hovered || topPopout.hovered
                 }
             }
 

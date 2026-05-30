@@ -18,9 +18,10 @@ Rectangle {
 
         BatteryWidget {}
         RamUsageWidget {}
-        CpuTempWidget {}
+        //CpuTempWidget {}
         CpuUsageWidget {}
         AudioWidget {}
+        WifiWidget {}
 
         // Arch logo
         Text {

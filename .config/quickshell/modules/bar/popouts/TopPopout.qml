@@ -6,21 +6,29 @@ import qs.theme
 Item {
     id: root
     property bool expanded: false
+    property bool hovered: mouse.hovered
     property int cornerRadius: 20
     property int expandedHeight: 400
     width: 600
     height: expandedHeight + cornerRadius
+
+    HoverHandler {
+        id: mouse
+    }
+
     Shape {
         id: inverseCorners
         anchors.fill: containerRectangle
         preferredRendererType: Shape.CurveRenderer
         visible: containerRectangle.height >= root.cornerRadius
+
         // Top-left inverse corner
         ShapePath {
             fillColor: Theme.background
             strokeWidth: 2
             strokeColor: Theme.accent
             startX: -root.cornerRadius; startY: 0
+
             PathLine { x: root.cornerRadius + 10; y: 0 }
             PathLine { x: 0; y: root.cornerRadius }
             PathQuad {
@@ -30,20 +38,24 @@ Item {
                 controlY: 0
             }
         }
+
         // Top-right inverse corner
         ShapePath {
             fillColor: Theme.background
             strokeWidth: 2
             strokeColor: Theme.accent
             startX: containerRectangle.width + root.cornerRadius; startY: 0
+
             PathLine {
                 x: containerRectangle.width - root.cornerRadius - 10
                 y: 0
             }
+
             PathLine {
                 x: containerRectangle.width
                 y: root.cornerRadius
             }
+
             PathQuad {
                 x: containerRectangle.width + root.cornerRadius
                 y: 0
@@ -52,6 +64,7 @@ Item {
             }
         }
     }
+
     Rectangle {
         id: containerRectangle
         anchors.horizontalCenter: parent.horizontalCenter
@@ -65,8 +78,8 @@ Item {
 
         Behavior on height {
             NumberAnimation {
-                duration: 400
-                easing.type: Easing.OutBack
+                duration: root.expanded ? 350: 400
+                easing.type: root.expanded ? Easing.InCubic : Easing.OutBack
                 easing.overshoot: 1.5
             }
         }
@@ -77,10 +90,12 @@ Item {
         anchors.fill: containerRectangle
         preferredRendererType: Shape.CurveRenderer
         visible: containerRectangle.height >= root.cornerRadius
+
         ShapePath {
             fillColor: Theme.background
             strokeWidth: 0
             strokeColor: Theme.background
+
             startX: 0; startY: 1.5
             PathLine { x: containerRectangle.width; y: 1.5 }
             PathLine { x: containerRectangle.width - 2; y: root.cornerRadius }

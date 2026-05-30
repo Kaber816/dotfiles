@@ -16,7 +16,6 @@ Item { id: root
         radius: 10
         color: Theme.backgroundSecondary
 
-
         RowLayout {
             id: workspaceRow
             anchors.centerIn: parent
@@ -45,9 +44,19 @@ Item { id: root
                         : "transparent"
 
                     opacity: isActive ? 1.0 : 0.65
+                    border.color: workspace.hovered ? Theme.foreground : "transparent"
+                    border.width: workspace.hovered ? 1.5 : 0
+
+                    HoverHandler {
+                        id: workspace
+                    }
 
                     Behavior on color {
                         ColorAnimation { duration: 90 }
+                    }
+
+                    Behavior on border.color {
+                        ColorAnimation { duration: 200 }
                     }
 
                     Behavior on opacity {
