@@ -7,6 +7,7 @@ Singleton {
     id: root
     property int percentage: 0
     property bool charging: false
+    property bool present: false
 
     Process {
         id: batteryProcess
@@ -25,7 +26,10 @@ Singleton {
             onRead: data => {
                 let parts = data.trim().split(" ")
                 let val = parseInt(parts[0])
-                if (!isNaN(val)) root.percentage = val
+                if (!isNaN(val) && val > 0) {
+                    root.percentage = val
+                    root.present = true
+                }
                 root.charging = parts[1] === "Charging"
             }
         }

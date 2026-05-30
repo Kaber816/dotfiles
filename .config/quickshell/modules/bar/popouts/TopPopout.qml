@@ -3,68 +3,57 @@ import QtQuick
 import QtQuick.Shapes
 import QtQuick.Layouts
 import qs.theme
-
 Item {
     id: root
-
     property bool expanded: false
-    property int cr: 20
+    property int cornerRadius: 20
     property int expandedHeight: 400
-
     width: 600
-    height: expandedHeight + cr
-
+    height: expandedHeight + cornerRadius
     Shape {
         id: inverseCorners
-
         anchors.fill: containerRectangle
         preferredRendererType: Shape.CurveRenderer
-        visible: containerRectangle.height >= root.cr
-
+        visible: containerRectangle.height >= root.cornerRadius
         // Top-left inverse corner
         ShapePath {
             fillColor: Theme.background
-            strokeWidth: 1.5
+            strokeWidth: 2
             strokeColor: Theme.accent
-
-            startX: -root.cr; startY: 0
-            PathLine { x: root.cr + 10; y: 0 }
-            PathLine { x: 0; y: root.cr }
+            startX: -root.cornerRadius; startY: 0
+            PathLine { x: root.cornerRadius + 10; y: 0 }
+            PathLine { x: 0; y: root.cornerRadius }
             PathQuad {
-                x: -root.cr
+                x: -root.cornerRadius
                 y: 0
                 controlX: 0
                 controlY: 0
             }
         }
-
         // Top-right inverse corner
         ShapePath {
             fillColor: Theme.background
-            strokeWidth: 1.5
+            strokeWidth: 2
             strokeColor: Theme.accent
-
-            startX: containerRectangle.width + root.cr; startY: 0
+            startX: containerRectangle.width + root.cornerRadius; startY: 0
             PathLine {
-                x: containerRectangle.width - root.cr - 10
+                x: containerRectangle.width - root.cornerRadius - 10
                 y: 0
             }
             PathLine {
                 x: containerRectangle.width
-                y: root.cr
+                y: root.cornerRadius
             }
             PathQuad {
-                x: containerRectangle.width + root.cr
+                x: containerRectangle.width + root.cornerRadius
                 y: 0
                 controlX: containerRectangle.width
                 controlY: 0
             }
         }
     }
-
     Rectangle {
         id: containerRectangle
-
         anchors.horizontalCenter: parent.horizontalCenter
         radius: 20
         color: Theme.background
@@ -72,16 +61,30 @@ Item {
         border.width: 1.5
         width: 600
         clip: true
-
         height: root.expanded ? root.expandedHeight : 0
 
         Behavior on height {
             NumberAnimation {
-                duration: 300
-                easing.type: root.expanded ? Easing.OutCubic : Easing.InCubic
+                duration: 400
+                easing.type: Easing.OutBack
+                easing.overshoot: 1.5
             }
         }
-
     }
 
+    Shape {
+        id: outlineMask
+        anchors.fill: containerRectangle
+        preferredRendererType: Shape.CurveRenderer
+        visible: containerRectangle.height >= root.cornerRadius
+        ShapePath {
+            fillColor: Theme.background
+            strokeWidth: 0
+            strokeColor: Theme.background
+            startX: 0; startY: 1.5
+            PathLine { x: containerRectangle.width; y: 1.5 }
+            PathLine { x: containerRectangle.width - 2; y: root.cornerRadius }
+            PathLine { x: 2; y: root.cornerRadius }
+        }
+    }
 }
