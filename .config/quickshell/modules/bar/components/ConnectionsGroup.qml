@@ -9,6 +9,8 @@ Rectangle {
     radius: height / 2
     color: Theme.backgroundSecondary
     implicitWidth: groupRow.implicitWidth + 10
+        
+    property bool networkWidgetHovered : networkWidget.hovered
 
     RowLayout {
         id: groupRow
@@ -17,11 +19,12 @@ Rectangle {
         spacing: 8
 
         BatteryWidget {}
-        //RamUsageWidget {}
-        //CpuTempWidget {}
-        //CpuUsageWidget {}
-        //AudioWidget {}
-        WifiWidget {}
-
+        RamUsageWidget {}
+        CpuTempWidget {}
+        CpuUsageWidget {}
+        AudioWidget {}
+        NetworkWidget {
+            id: networkWidget
+        }
     }
 }

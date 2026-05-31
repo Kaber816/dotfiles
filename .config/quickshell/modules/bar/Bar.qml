@@ -59,10 +59,21 @@ Scope {
                     id: topPopout
                     anchors {
                         top: parent.top
-                        topMargin: barScope.topBarHeight
+                        topMargin: barScope.topBarHeight - 1.5
                         horizontalCenter: parent.horizontalCenter
                     }
                     expanded: centerHover.hovered || topPopout.hovered
+                }
+
+                NetworkPopout {
+                    id: networkPopout
+                    anchors {
+                        top: parent.top
+                        topMargin: barScope.topBarHeight - 1.5
+                        right: parent.right
+                        rightMargin: 80
+                    }
+                    expanded: connectionsGroup.networkWidgetHovered
                 }
 
             }
@@ -120,7 +131,9 @@ Scope {
                             anchors.verticalCenter: parent.verticalCenter
                             spacing: 8
 
-                            ConnectionsGroup {}
+                            ConnectionsGroup {
+                                id: connectionsGroup
+                            }
 
                             // Arch logo
                             Text {

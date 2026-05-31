@@ -25,42 +25,35 @@ Item {
         // Top-left inverse corner
         ShapePath {
             fillColor: Theme.background
-            strokeWidth: 2
+            strokeWidth: 1.5
             strokeColor: Theme.accent
-            startX: -root.cornerRadius; startY: 0
-
-            PathLine { x: root.cornerRadius + 10; y: 0 }
-            PathLine { x: 0; y: root.cornerRadius }
+            startX: -root.cornerRadius; startY: 1.5
             PathQuad {
-                x: -root.cornerRadius
-                y: 0
-                controlX: 0
-                controlY: 0
-            }
-        }
-
-        // Top-right inverse corner
-        ShapePath {
-            fillColor: Theme.background
-            strokeWidth: 2
-            strokeColor: Theme.accent
-            startX: containerRectangle.width + root.cornerRadius; startY: 0
-
-            PathLine {
-                x: containerRectangle.width - root.cornerRadius - 10
-                y: 0
-            }
-
-            PathLine {
-                x: containerRectangle.width
+                x: -2
                 y: root.cornerRadius
+                controlX: -2
+                controlY: 1.5
             }
-
+            PathLine { x: -2; y: containerRectangle.height - root.cornerRadius}
+            PathQuad {
+                x: root.cornerRadius
+                y: containerRectangle.height + 2
+                controlX: -2
+                controlY: containerRectangle.height + 2
+            }
+            PathLine { x: containerRectangle.width - root.cornerRadius; y: containerRectangle.height + 2 }
+            PathQuad {
+                x: containerRectangle.width + 2
+                y: containerRectangle.height - root.cornerRadius
+                controlX: containerRectangle.width + 2
+                controlY: containerRectangle.height + 2
+            }
+            PathLine { x: containerRectangle.width + 2; y: root.cornerRadius}
             PathQuad {
                 x: containerRectangle.width + root.cornerRadius
-                y: 0
-                controlX: containerRectangle.width
-                controlY: 0
+                y: 1.5
+                controlX: containerRectangle.width + 2
+                controlY: 1.5
             }
         }
     }
@@ -70,8 +63,8 @@ Item {
         anchors.horizontalCenter: parent.horizontalCenter
         radius: 20
         color: Theme.background
-        border.color: Theme.accent
-        border.width: 1.5
+        border.color: "transparent"
+        border.width: 0
         width: 600
         clip: true
         height: root.expanded ? root.expandedHeight : 0
@@ -96,10 +89,11 @@ Item {
             strokeWidth: 0
             strokeColor: Theme.background
 
-            startX: 0; startY: 1.5
-            PathLine { x: containerRectangle.width; y: 1.5 }
-            PathLine { x: containerRectangle.width - 2; y: root.cornerRadius }
-            PathLine { x: 2; y: root.cornerRadius }
+            startX: -root.cornerRadius; startY: 0
+            PathLine { x: containerRectangle.width + root.cornerRadius; y: 0}
+            PathLine { x: containerRectangle.width - 5; y: 5}
+            PathLine { x: 5; y: 5}
+            PathLine { x: -root.cornerRadius; y: 0}
         }
     }
 }

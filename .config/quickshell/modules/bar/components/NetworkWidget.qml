@@ -9,10 +9,15 @@ Item {
     id: root
     implicitWidth: innerRow.implicitWidth
     implicitHeight: innerRow.implicitHeight
+    property bool hovered: networkHover.hovered
 
     property var activeDevice: {
         const devices = Networking.devices.values
         return devices.find(d => d.type === DeviceType.Wifi || d.type === DeviceType.Wired) ?? null
+    }
+
+    HoverHandler {
+        id: networkHover
     }
 
     RowLayout {
@@ -35,9 +40,9 @@ Item {
                 anchors.horizontalCenterOffset: -1.0
 
                 text: {
-                    if (!activeDevice) return "󰖪"
-                    if (activeDevice.type === DeviceType.Wired) return "󰈀"
-                    if (activeDevice.type === DeviceType.Wifi) return "󰖩"
+                    if (!root.activeDevice) return "󰖪"
+                    if (root.activeDevice.type === DeviceType.Wired) return "󰈀"
+                    if (root.activeDevice.type === DeviceType.Wifi) return "󰖩"
                     return "󰖪"
                 }
             }
