@@ -6,12 +6,6 @@ Item {
     implicitWidth: row.implicitWidth
     implicitHeight: row.implicitHeight
 
-    MouseArea {
-        anchors.fill: parent
-        cursorShape: Qt.PointingHandCursor
-        //onClicked: launchProcess.running = true
-    }
-
     RowLayout {
         id: row
         spacing: 8

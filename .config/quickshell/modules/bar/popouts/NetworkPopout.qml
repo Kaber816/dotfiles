@@ -3,6 +3,7 @@ import QtQuick
 import QtQuick.Shapes
 import QtQuick.Layouts
 import qs.theme
+
 Item {
     id: root
     property bool expanded: false
@@ -78,7 +79,7 @@ Item {
 
         Behavior on height {
             NumberAnimation {
-                duration: root.expanded ? 350: 300
+                duration: root.expanded ? 350: 400
                 easing.type: root.expanded ? Easing.InCubic : Easing.OutBack
                 easing.overshoot: 1.5
             }
@@ -103,3 +104,4 @@ Item {
         }
     }
 }
+

@@ -7,8 +7,8 @@ RowLayout {
     spacing: 6
 
     Rectangle {
-        width: 25
-        height: 25
+        Layout.preferredWidth: 25
+        Layout.preferredHeight: 25
         radius: width / 2
         color: Theme.accent
 

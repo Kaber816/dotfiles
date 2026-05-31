@@ -3,8 +3,10 @@ import Quickshell.Networking
 import QtQuick
 import QtQuick.Layouts
 import qs.theme
+import QtQuick.Shapes
 
 Item {
+    id: root
     implicitWidth: innerRow.implicitWidth
     implicitHeight: innerRow.implicitHeight
 
@@ -18,8 +20,8 @@ Item {
         spacing: 6
 
         Rectangle {
-            width: 25
-            height: 25
+            Layout.preferredWidth: 25
+            Layout.preferredHeight: 25
             radius: width / 2
             color: Theme.accent
 
@@ -30,11 +32,11 @@ Item {
                 font.pixelSize: Theme.font.large
 
                 anchors.verticalCenterOffset: 0
-                anchors.horizontalCenterOffset: -0.9
+                anchors.horizontalCenterOffset: -1.0
 
                 text: {
                     if (!activeDevice) return "󰖪"
-                    if (activeDevice.type === DeviceType.Wired) return "󰈁"
+                    if (activeDevice.type === DeviceType.Wired) return "󰈀"
                     if (activeDevice.type === DeviceType.Wifi) return "󰖩"
                     return "󰖪"
                 }

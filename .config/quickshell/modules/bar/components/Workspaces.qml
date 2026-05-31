@@ -13,7 +13,7 @@ Item { id: root
         anchors.verticalCenter: parent.verticalCenter
         width: workspaceRow.implicitWidth + 20 // Make it 20 px wider than the width of the rectangles to contain them
         height: 35
-        radius: 10
+        radius: height / 2
         color: Theme.backgroundSecondary
 
         RowLayout {
@@ -37,7 +37,7 @@ Item { id: root
 
                     width: 33
                     height: 27
-                    radius: 7
+                    radius: height / 2
 
                     color: isActive
                         ? Theme.accent

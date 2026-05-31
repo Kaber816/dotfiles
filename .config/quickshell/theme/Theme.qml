@@ -54,9 +54,8 @@ QtObject {
     property var wal: pywal.adapter
 
     // --------------------
-    // LIGHT/DARK DETECTION
+    // LIGHT/DARK DETECTION 
     // --------------------
-
 
     property color lightThreshold: "#1d0c0b" // This is tuned from some of my light backgrounds
     property color color0: Theme.wal.colors.color0 ?? "#000000" // Easiest to check for light/dark
@@ -68,7 +67,7 @@ QtObject {
 
     property color backgroundSecondary: isLight
         ? Qt.darker(Theme.wal.colors.color6, 0.8)
-        : Qt.darker(Theme.wal.colors.color8, 1.4)
+        : Qt.darker(Theme.wal.colors.color8, 1.9)
 
     property color foreground: isLight
     ? "#303030"
@@ -80,4 +79,10 @@ QtObject {
 
     property color accent: Qt.darker(Theme.wal.colors.color4, 1.12)
 
+
+    // --------------------
+    // OTHER PROPERTIES
+    // --------------------
+
+    property int widgetRadius: 10
 }

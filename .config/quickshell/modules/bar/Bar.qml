@@ -64,6 +64,7 @@ Scope {
                     }
                     expanded: centerHover.hovered || topPopout.hovered
                 }
+
             }
 
             // Top bar reservation and contents
@@ -113,9 +114,21 @@ Scope {
                     Item {
                         Layout.fillWidth: true
                         Layout.fillHeight: true
-                        StatusGroup {
+                        
+                        RowLayout {
                             anchors.right: parent.right
                             anchors.verticalCenter: parent.verticalCenter
+                            spacing: 8
+
+                            ConnectionsGroup {}
+
+                            // Arch logo
+                            Text {
+                                text: ""
+                                color: Theme.foreground
+                                font.family: Theme.fontFamily
+                                font.pixelSize: Theme.font.title
+                            }
                         }
                     }
                 }
