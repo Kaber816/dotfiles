@@ -6,48 +6,58 @@ Item {
     implicitWidth: row.implicitWidth
     implicitHeight: row.implicitHeight
 
-    RowLayout {
-        id: row
-        spacing: 8
-        anchors.centerIn: parent
+    Rectangle {
+        height: 35
+        implicitWidth: row.implicitWidth + 30
+        radius: height / 2
+        color: "transparent" //Qt.darker(Theme.backgroundSecondary, 1.5)
 
-        Text {
-            text: Weather.icon + " " + Weather.temperature
-            color: Theme.foreground
-            font.family: Theme.fontFamily
-            font.pixelSize: Theme.font.normal
+        anchors {
+            centerIn: parent
         }
 
-        Text {
-            text: "|"
-            color: Theme.foreground
-            opacity: 0.4
-            font.family: Theme.fontFamily
-            font.pixelSize: Theme.font.normal
-        }
+        RowLayout {
+            id: row
+            spacing: 8
+            anchors.centerIn: parent
 
-        Text {
-            text: Time.time
-            color: Theme.foreground
-            font.family: Theme.fontFamily
-            font.pixelSize: Theme.font.normal
-        }
+            Text {
+                text: Weather.icon + " " + Weather.temperature
+                color: Theme.foreground
+                font.family: Theme.fontFamily
+                font.pixelSize: Theme.font.normal
+            }
 
-        Text {
-            text: "|"
-            color: Theme.foreground
-            opacity: 0.4
-            font.family: Theme.fontFamily
-            font.pixelSize: Theme.font.normal
-        }
+            Text {
+                text: "|"
+                color: Theme.foreground
+                opacity: 0.4
+                font.family: Theme.fontFamily
+                font.pixelSize: Theme.font.normal
+            }
 
-        Text {
-            text: Time.date
-            color: Theme.foreground
-            font.family: Theme.fontFamily
-            font.pixelSize: Theme.font.normal
-        }
+            Text {
+                text: Time.time
+                color: Theme.foreground
+                font.family: Theme.fontFamily
+                font.pixelSize: Theme.font.normal
+            }
 
+            Text {
+                text: "|"
+                color: Theme.foreground
+                opacity: 0.4
+                font.family: Theme.fontFamily
+                font.pixelSize: Theme.font.normal
+            }
+
+            Text {
+                text: Time.date
+                color: Theme.foreground
+                font.family: Theme.fontFamily
+                font.pixelSize: Theme.font.normal
+            }
+
+        }
     }
-
 }

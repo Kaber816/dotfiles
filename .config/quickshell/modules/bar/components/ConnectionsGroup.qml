@@ -8,7 +8,7 @@ Rectangle {
     height: 35
     radius: height / 2
     color: Theme.backgroundSecondary
-    implicitWidth: groupRow.implicitWidth + 10
+    implicitWidth: groupRow.implicitWidth + 30
         
     property bool networkWidgetHovered : networkWidget.hovered
 
@@ -16,7 +16,7 @@ Rectangle {
         id: groupRow
         anchors.centerIn: parent
         anchors.horizontalCenterOffset: 0
-        spacing: 8
+        spacing: 10
 
         BatteryWidget {}
         RamUsageWidget {}
