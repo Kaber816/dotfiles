@@ -31,7 +31,7 @@ Item {
             Text {
                 text: "|"
                 color: Theme.foreground
-                opacity: 0.4
+                opacity: 0.6
                 font.family: Theme.fontFamily
                 font.pixelSize: Theme.font.normal
             }
@@ -46,7 +46,7 @@ Item {
             Text {
                 text: "|"
                 color: Theme.foreground
-                opacity: 0.4
+                opacity: 0.6
                 font.family: Theme.fontFamily
                 font.pixelSize: Theme.font.normal
             }
