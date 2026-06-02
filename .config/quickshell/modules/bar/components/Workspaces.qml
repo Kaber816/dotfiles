@@ -77,7 +77,7 @@ Item { id: root
 
                     Text {
                         anchors.centerIn: parent
-                        text: modelData.id
+                        text: rectangle.modelData.id
                         color: Theme.foreground
                         font.family: Theme.fontFamily
                         font.pixelSize: 16

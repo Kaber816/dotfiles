@@ -10,6 +10,7 @@ Scope {
     id: root
     Variants {
         model: Quickshell.screens
+
         Scope {
             id: barScope
             required property ShellScreen modelData
@@ -18,7 +19,7 @@ Scope {
 
             // Background
             PanelWindow {
-                screen: modelData
+                screen: barScope.modelData
                 color: "transparent"
                 WlrLayershell.layer: WlrLayer.Bottom
                 WlrLayershell.exclusionMode: ExclusionMode.Ignore
@@ -36,7 +37,8 @@ Scope {
             
             // Popouts
             PanelWindow {
-                screen: modelData
+                id: popoutWindow
+                screen: barScope.modelData
                 color: "transparent"
                 WlrLayershell.layer: WlrLayer.Top
                 WlrLayershell.exclusionMode: ExclusionMode.Ignore
@@ -53,8 +55,16 @@ Scope {
                     y: topPopout.y
                     width: topPopout.expanded ? topPopout.width: 0
                     height: topPopout.expanded ? topPopout.height : 0
+
+                    Region {
+                        x: networkPopout.x
+                        y: networkPopout.y
+                        width: networkPopout.expanded ? networkPopout.width : 0
+                        height: networkPopout.expanded ? networkPopout.height : 0
+                    }
                 }
 
+                // - TOP POPOUT LOGIG
                 TopPopout {
                     id: topPopout
                     anchors {
@@ -65,22 +75,42 @@ Scope {
                     expanded: centerHover.hovered || topPopout.hovered
                 }
 
+                // - NETWORK POPOUT LOGIC
+                property bool networkExpanded: false
+
+                Timer {
+                    id: networkCloseTimer
+                    interval: 150
+                    onTriggered: popoutWindow.networkExpanded = false
+                }
+
                 NetworkPopout {
                     id: networkPopout
+
                     anchors {
                         top: parent.top
                         topMargin: barScope.topBarHeight - 1.5
                         right: parent.right
-                        rightMargin: 80
+                        rightMargin: 70
                     }
-                    expanded: connectionsGroup.networkWidgetHovered
+                    expanded: popoutWindow.networkExpanded
+
+                    HoverHandler {
+                        onHoveredChanged: {
+                            if (hovered) {
+                                networkCloseTimer.stop()
+                            } else {
+                                networkCloseTimer.restart()
+                            }
+                        }
+                    }
                 }
 
             }
 
             // Top bar reservation and contents
             PanelWindow {
-                screen: modelData
+                screen: barScope.modelData
                 color: "transparent"
                 implicitHeight: barScope.topBarHeight
                 WlrLayershell.layer: WlrLayer.Top
@@ -103,7 +133,7 @@ Scope {
                         Workspaces {
                             anchors.left: parent.left
                             anchors.verticalCenter: parent.verticalCenter
-                            monitor: modelData
+                            monitor: barScope.modelData
                         }
                     }
 
@@ -133,6 +163,14 @@ Scope {
 
                             ConnectionsGroup {
                                 id: connectionsGroup
+                                onNetworkWidgetHoveredChanged: {
+                                    if (connectionsGroup.networkWidgetHovered) {
+                                        networkCloseTimer.stop()
+                                        popoutWindow.networkExpanded = true
+                                    } else {
+                                        networkCloseTimer.restart()
+                                    }
+                                }
                             }
 
                             // Arch logo
@@ -149,7 +187,7 @@ Scope {
 
             // Right bar reservation
             PanelWindow {
-                screen: modelData
+                screen: barScope.modelData
                 color: "transparent"
                 implicitWidth: barScope.borderWidth
                 WlrLayershell.layer: WlrLayer.Top
@@ -162,7 +200,7 @@ Scope {
 
             // Left bar reservation
             PanelWindow {
-                screen: modelData
+                screen: barScope.modelData
                 color: "transparent"
                 implicitWidth: barScope.borderWidth
                 WlrLayershell.layer: WlrLayer.Top
@@ -175,7 +213,7 @@ Scope {
 
             // Bottom bar reservation
             PanelWindow {
-                screen: modelData
+                screen: barScope.modelData
                 color: "transparent"
                 implicitHeight: barScope.borderWidth
                 WlrLayershell.layer: WlrLayer.Top

@@ -32,15 +32,15 @@ Item {
         id: networkHover
 
         // Not using this but useful for understanding how quickshell types work
-        onHoveredChanged: {
-            const devices = Networking.devices.values
-            for (const device of devices) {
-                console.log("device:", device.name, "type:", DeviceType.toString(device.type), "Connected:", ConnectionState.toString(device.state))
-                for (const network of device.networks.values) {
-                    console.log("  network:", network.name)
-                }
-            }
-        }
+       // onHoveredChanged: {
+       //     const devices = Networking.devices.values
+       //     for (const device of devices) {
+       //         console.log("device:", device.name, "type:", DeviceType.toString(device.type), "Connected:", ConnectionState.toString(device.state))
+       //         for (const network of device.networks.values) {
+       //             console.log("  network:", network.name)
+       //         }
+       //     }
+       // }
     }
 
     RowLayout {

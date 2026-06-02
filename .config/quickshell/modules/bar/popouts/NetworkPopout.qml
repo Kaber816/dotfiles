@@ -9,10 +9,10 @@ Item {
     id: root
     property bool expanded: false
     property bool hovered: mouse.hovered
-    property int cornerRadius: 16
-    property int expandedHeight: contentColumn.implicitHeight + 24
+    property int cornerRadius: 20
+    property int expandedHeight: contentColumn.implicitHeight + 20
 
-    width: 200
+    width: 150
     height: expandedHeight + cornerRadius
 
     property var wifiDevice: {
@@ -21,7 +21,7 @@ Item {
     }
     property var wiredDevice: {
         const devices = Networking.devices.values
-        return devices.find(d => d.type === DeviceType.Wired) ?? null
+        return devices.filter(d => d.type === DeviceType.Wired)
     }
 
     HoverHandler { id: mouse }
@@ -77,7 +77,7 @@ Item {
             }
         }
 
-        Column {
+        ColumnLayout {
             id: contentColumn
             anchors {
                 top: parent.top
@@ -88,8 +88,8 @@ Item {
             spacing: 10
 
             // Wifi
-            Column {
-                width: parent.width
+            ColumnLayout {
+                Layout.preferredWidth: parent.width
                 spacing: 4
                 visible: root.wifiDevice !== null
 
@@ -99,28 +99,46 @@ Item {
                     font.family: Theme.fontFamily
                     font.pixelSize: Theme.font.small
                 }
+                
+                Repeater {
+                    model: root.wifiDevice.networks
+                    
+                    Column {
+                        id: networksColumn
+                        required property var modelData
+                        spacing: 2
 
-                Text {
-                    text: Networking.wifiEnabled ? "Enabled" : "Disabled"
-                    color: Theme.foreground
-                    font.family: Theme.fontFamily
-                    font.pixelSize: Theme.font.normal
-                    font.weight: Font.Medium
+                        Text {
+                            color: Theme.foreground
+                            font.family: Theme.fontFamily
+                            font.pixelSize: Theme.font.normal
+                            font.weight: Font.Medium
+                            text: networksColumn.modelData.name
+                        }
+
+                        Text {
+                            font.family: Theme.fontFamily
+                            font.pixelSize: Theme.font.small
+                            color: Theme.foreground
+                            opacity: 0.6
+                            text: networksColumn.modelData.connected ? "Connected" : "Not Connected"
+                        }
+                    }
                 }
             }
 
             // Divider
             Rectangle {
                 visible: root.wifiDevice !== null && root.wiredDevice !== null
-                width: parent.width
-                height: 1
+                Layout.preferredWidth: parent.width
+                Layout.preferredHeight: 1
                 color: Theme.accent
                 opacity: 0.2
             }
 
             // Wired
-            Column {
-                width: parent.width
+            ColumnLayout {
+                Layout.preferredWidth: parent.width
                 spacing: 4
                 visible: root.wiredDevice !== null
 
@@ -130,13 +148,32 @@ Item {
                     font.family: Theme.fontFamily
                     font.pixelSize: Theme.font.small
                 }
+                
+            } 
 
-                Text {
-                    text: "Connected"
-                    color: Theme.foreground
-                    font.family: Theme.fontFamily
-                    font.pixelSize: Theme.font.normal
-                    font.weight: Font.Medium
+            Repeater {
+                model: Networking.devices.values.filter(d => d.type === DeviceType.Wired)
+
+                Column {
+                    id: wiredDeviceColumn
+                    required property var modelData
+                    spacing: 2
+                    width: parent.width
+
+                    Text {
+                        font.family: Theme.fontFamily
+                        font.pixelSize: Theme.font.normal
+                        color: Theme.foreground
+                        text: wiredDeviceColumn.modelData.name
+                    }
+
+                    Text {
+                        font.family: Theme.fontFamily
+                        font.pixelSize: Theme.font.small
+                        color: Theme.foreground
+                        opacity: 0.6
+                        text: wiredDeviceColumn.modelData.connected ? "Connected" : "Disconnected"
+                    }
                 }
             }
         }
