@@ -148,34 +148,35 @@ Item {
                     font.family: Theme.fontFamily
                     font.pixelSize: Theme.font.small
                 }
+
+                Repeater {
+                    model: Networking.devices.values.filter(d => d.type === DeviceType.Wired)
+
+                    Column {
+                        id: wiredDeviceColumn
+                        required property var modelData
+                        spacing: 2
+                        width: parent.width
+
+                        Text {
+                            font.family: Theme.fontFamily
+                            font.pixelSize: Theme.font.normal
+                            color: Theme.foreground
+                            text: wiredDeviceColumn.modelData.name
+                        }
+
+                        Text {
+                            font.family: Theme.fontFamily
+                            font.pixelSize: Theme.font.small
+                            color: Theme.foreground
+                            opacity: 0.6
+                            text: wiredDeviceColumn.modelData.connected ? "Connected" : "Disconnected"
+                        }
+                    }
+                }
                 
             } 
 
-            Repeater {
-                model: Networking.devices.values.filter(d => d.type === DeviceType.Wired)
-
-                Column {
-                    id: wiredDeviceColumn
-                    required property var modelData
-                    spacing: 2
-                    width: parent.width
-
-                    Text {
-                        font.family: Theme.fontFamily
-                        font.pixelSize: Theme.font.normal
-                        color: Theme.foreground
-                        text: wiredDeviceColumn.modelData.name
-                    }
-
-                    Text {
-                        font.family: Theme.fontFamily
-                        font.pixelSize: Theme.font.small
-                        color: Theme.foreground
-                        opacity: 0.6
-                        text: wiredDeviceColumn.modelData.connected ? "Connected" : "Disconnected"
-                    }
-                }
-            }
         }
     }
 
