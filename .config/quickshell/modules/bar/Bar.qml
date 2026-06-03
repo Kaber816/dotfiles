@@ -51,10 +51,10 @@ Scope {
                 }
 
                 mask: Region {
-                    x: topPopout.x
-                    y: topPopout.y
-                    width: topPopout.expanded ? topPopout.width: 0
-                    height: topPopout.expanded ? topPopout.height : 0
+                    x: topCenterPopout.x
+                    y: topCenterPopout.y
+                    width: topCenterPopout.expanded ? topCenterPopout.width: 0
+                    height: topCenterPopout.expanded ? topCenterPopout.height : 0
 
                     Region {
                         x: networkPopout.x
@@ -65,14 +65,14 @@ Scope {
                 }
 
                 // - TOP POPOUT LOGIG
-                TopPopout {
-                    id: topPopout
+                TopCenterPopout {
+                    id: topCenterPopout
                     anchors {
                         top: parent.top
                         topMargin: barScope.topBarHeight - 1.5
                         horizontalCenter: parent.horizontalCenter
                     }
-                    expanded: centerHover.hovered || topPopout.hovered
+                    expanded: centerHover.hovered || topCenterPopout.hovered
                 }
 
                 // - NETWORK POPOUT LOGIC
@@ -80,7 +80,7 @@ Scope {
 
                 Timer {
                     id: networkCloseTimer
-                    interval: 150
+                    interval: 80
                     onTriggered: popoutWindow.networkExpanded = false
                 }
 
@@ -91,7 +91,7 @@ Scope {
                         top: parent.top
                         topMargin: barScope.topBarHeight - 1.5
                         right: parent.right
-                        rightMargin: 70
+                        rightMargin: 65
                     }
                     expanded: popoutWindow.networkExpanded
 
