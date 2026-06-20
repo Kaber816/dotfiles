@@ -307,8 +307,9 @@ hl.bind(mainMod .. " + S",         hl.dsp.workspace.toggle_special("magic"))
 hl.bind(mainMod .. " + SHIFT + S", hl.dsp.window.move({ workspace = "special:magic" }))
 
 -- Scroll through existing workspaces with mainMod + scroll
-hl.bind(mainMod .. " + mouse_down", hl.dsp.focus({ workspace = "e+1" }))
-hl.bind(mainMod .. " + mouse_up",   hl.dsp.focus({ workspace = "e-1" }))
+--hl.bind(mainMod .. " + mouse_down", hl.dsp.focus({ workspace = "e+1" }))
+--hl.bind(mainMod .. " + mouse_up",   hl.dsp.focus({ workspace = "e-1" }))
+
 
 -- Move/resize windows with mainMod + LMB/RMB and dragging
 hl.bind(mainMod .. " + mouse:272", hl.dsp.window.drag(),   { mouse = true })
@@ -329,13 +330,32 @@ hl.bind("XF86AudioPlay",  hl.dsp.exec_cmd("playerctl play-pause"), { locked = tr
 hl.bind("XF86AudioPrev",  hl.dsp.exec_cmd("playerctl previous"),   { locked = true })
 
 -- Other bindings I added
+
+-- Screnshot stuff
 hl.bind("SUPER + F12", hl.dsp.exec_cmd([[grim -g "$(slurp)" ~/Pictures/Screenshots/$(date +'%Y-%m-%d_%H-%M-%S').png]]))
 hl.bind("SUPER + SHIFT + F12", hl.dsp.exec_cmd([[grim -g "$(slurp)" - | wl-copy]]))
+
+-- Open wallpaper picker
 hl.bind("SUPER + W", hl.dsp.exec_cmd("/home/kadenb/.local/bin/wallpicker.sh"))
+
+-- Open power menu
 hl.bind("SUPER + BackSpace", hl.dsp.exec_cmd("~/.local/bin/powermenu.sh"))
+
+-- Program killer
 hl.bind("SUPER + DELETE", hl.dsp.exec_cmd("hyprctl kill"))
+
+-- Open sway notification bar
 hl.bind("SUPER + N", hl.dsp.exec_cmd("swaync-client -t"))
+
+-- Fulscreen current window
 hl.bind("SUPER + F", hl.dsp.window.fullscreen())
+
+-- Scroll through existing workspaces on current monitor with mainMod + scroll
+hl.bind(mainMod .. " + mouse_down", hl.dsp.focus({ workspace = "m+1" }))
+hl.bind(mainMod .. " + mouse_up",   hl.dsp.focus({ workspace = "m-1" }))
+
+-- Open next available workspaceo on current monitor
+hl.bind(mainMod .. " + CTRL + mouse:273 ", hl.dsp.focus({ workspace = "emptym" }))
 
 --------------------------------
 ---- WINDOWS AND WORKSPACES ----
@@ -386,3 +406,6 @@ hl.window_rule({
     move  = "20 monitor_h-120",
     float = true,
 })
+
+-- hyprmon: managed monitor profile include
+require("hyprmon")
