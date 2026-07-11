@@ -64,7 +64,7 @@ Scope {
                     }
                 }
 
-                // - TOP POPOUT LOGIG
+                // TOP POPOUT LOGIG
                 TopCenterPopout {
                     id: topCenterPopout
                     anchors {
