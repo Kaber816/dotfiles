@@ -27,7 +27,7 @@ TopPopoutContainer {
         ColumnLayout {
             Layout.fillWidth: true
             spacing: 4
-            visible: root.wifiDevice !== null
+            // visible: root.wifiDevice !== null // (always visible)
 
             Text {
                 text: "󰖩  WiFi"
@@ -36,8 +36,17 @@ TopPopoutContainer {
                 font.pixelSize: Theme.font.small
             }
 
+            Text {
+                visible: toString(Networking.connectivity) == "None"
+                color: Theme.foreground
+                font.family: Theme.fontFamily
+                font.pixelSize: Theme.font.normal
+                font.weight: Font.Medium
+                text: "No Networks Connected"
+            }
+
             Repeater {
-                model: root.wifiDevice?.networks
+                model: root.wifiDevice.networks
 
                 Column {
                     id: wifiNetworksCol

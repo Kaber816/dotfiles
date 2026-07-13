@@ -28,6 +28,13 @@ Item {
         return null
     }
 
+    property color iconColor
+    MouseArea {
+        anchors.fill: parent
+        cursorShape: Qt.PointingHandCursor
+        onClicked: Networking.wifiEnabled = !Networking.wifiEnabled
+    }
+
     HoverHandler {
         id: networkHover
 
@@ -48,10 +55,11 @@ Item {
         spacing: 6
 
         Rectangle {
+            id: icon
             Layout.preferredWidth: 25
             Layout.preferredHeight: 25
             radius: width / 2
-            color: Theme.accent
+            color: Networking.wifiEnabled ? Theme.accent : Theme.background
 
             Text {
                 anchors.centerIn: parent
