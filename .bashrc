@@ -11,3 +11,6 @@ alias grep='grep --color=auto'
 PS1='[\u@\h \W]\$ '
 (cat ~/.cache/wal/sequences &)
 
+export PATH="$PATH:$HOME/.local/bin"
+export PATH="$HOME/Dev/gcc-arm-none-eabi-10-2020-q4-major/bin:$PATH"
+

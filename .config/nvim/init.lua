@@ -10,6 +10,9 @@ require("config.lazy")
 require("config.keymaps")
 require("config.lsp")
 
+
+-- Highlighting
+
 -- UI
 --vim.cmd.colorscheme("colorscheme")
 

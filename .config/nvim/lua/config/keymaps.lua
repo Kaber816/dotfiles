@@ -75,3 +75,20 @@ end, { desc = "Open man page for word under cursor" })
 
 vim.keymap.set("n", "<leader>w", vim.diagnostic.open_float, { desc = "Show diagnostic" })
 
+vim.api.nvim_create_autocmd("LspAttach", {
+  callback = function(args)
+    local builtin = require("telescope.builtin")
+    local opts = { buffer = args.buf, silent = true }
+
+    -- go to definition (Telescope picker)
+    vim.keymap.set("n", "gd", builtin.lsp_definitions, opts)
+    -- go to references
+    vim.keymap.set("n", "gr", builtin.lsp_references, opts)
+
+    -- handy extras that use the same LSP data:
+    vim.keymap.set("n", "gi", builtin.lsp_implementations, opts)
+    vim.keymap.set("n", "gt", builtin.lsp_type_definitions, opts)
+    vim.keymap.set("n", "<leader>ds", builtin.lsp_document_symbols, opts)
+    vim.keymap.set("n", "<leader>ws", builtin.lsp_dynamic_workspace_symbols, opts)
+  end,
+})
