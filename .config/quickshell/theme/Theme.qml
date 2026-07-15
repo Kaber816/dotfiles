@@ -70,12 +70,12 @@ QtObject {
         : Qt.darker(Theme.wal.colors.color8, 1.9)
 
     property color foreground: isLight
-    ? "#303030"
-    : "#C0C0C0"
+    ? "#000000"
+    : "#e3e3e3"
 
     property color foregroundInverse: isLight
-    ? "#C0C0C0"
-    : "#303030"
+    ? "#ffffff"
+    : "#000000"
 
     property color accent: Qt.darker(Theme.wal.colors.color4, 1.12)
 
