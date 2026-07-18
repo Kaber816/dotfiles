@@ -20,6 +20,7 @@ Item {
 
             Text {
                 anchors.centerIn: parent
+                anchors.horizontalCenterOffset: -0.5
                 text: {
                     if (Battery.charging) return "󱐋"
                     if (Battery.percentage <= 20) return ""
