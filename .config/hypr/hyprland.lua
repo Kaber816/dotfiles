@@ -64,12 +64,13 @@ local menu        = "wofi --show drun --conf ~/.config/wofi/appmenu.conf --style
 -- Or execute your favorite apps at launch like this:
 
 hl.on("hyprland.start", function () 
-  hl.exec_cmd("nm-applet")
-  hl.exec_cmd("hyprpaper")
-  hl.exec_cmd("wal -R -q")
-  hl.exec_cmd("sleep 2 && qs")
-  hl.exec_cmd("sleep 2 && ~/.local/bin/restore_wallpaper.sh")
-  hl.exec_cmd("dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP")
+    hl.exec_cmd("nm-applet")
+    hl.exec_cmd("hyprpaper")
+    hl.exec_cmd("wal -R -q")
+    hl.exec_cmd("sleep 2 && qs")
+    hl.exec_cmd("sleep 2 && ~/.local/bin/restore_wallpaper.sh")
+    hl.exec_cmd("dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP")
+    hl.exec_cmd("dbus-update-activation-environment --systemd --all && systemctl --user start hyprpolkitagent")
 end)
 
 -------------------------------
