@@ -15,7 +15,7 @@ Item {
 
     Process {
         id: launchProcess
-        command: ["pwvucontrol"]
+        command: ["pavucontrol"]
     }
 
     RowLayout {

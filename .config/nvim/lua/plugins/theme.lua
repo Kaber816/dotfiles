@@ -1,33 +1,55 @@
+-- Gruvbox material theme
 return {
     {
-        "ellisonleao/gruvbox.nvim",
+        "sainnhe/gruvbox-material",
+        lazy= false,
         priority = 1000,
-        opts = {
-            terminal_colors = true,
-            undercurl = true,
-            underline = true,
-            bold = true,
-            italic = {
-                strings = false,
-                emphasis = true,
-                comments = true,
-                operators = false,
-                folds = true,
-            },
-            strikethrough = true,
+        config = function()
+            vim.g.gruvbox_material_background = "hard"
+            vim.g.gruvbox_material_foreground = "original"
+            vim.g.gruvbox_material_enable_bold = 1
+            vim.g.gruvbox_material_enable_italic = 1
+            vim.g.gruvbox_material_disable_italic_comment = 0
+            vim.g.gruvbox_material_transparent_background = 0
+            vim.g.gruvbox_material_dim_inactive_windows = 0
+            vim.g.gruvbox_material_better_performance = 1
 
-            contrast = "hard", -- "soft", "medium", "hard"
-
-            dim_inactive = false,
-            transparent_mode = false, -- set true if you want transparent background
-        },
-        config = function(_, opts)
-            require("gruvbox").setup(opts)
             vim.o.background = "dark"
-            vim.cmd.colorscheme("gruvbox")
+            vim.cmd.colorscheme("gruvbox-material")
         end,
     },
 }
+
+--return {
+--    {
+--        "ellisonleao/gruvbox.nvim",
+--        priority = 1000,
+--        opts = {
+--            terminal_colors = true,
+--            undercurl = true,
+--            underline = true,
+--            bold = true,
+--            italic = {
+--                strings = false,
+--                emphasis = true,
+--                comments = true,
+--                operators = false,
+--                folds = true,
+--            },
+--            strikethrough = true,
+--
+--            contrast = "hard", -- "soft", "medium", "hard"
+--
+--            dim_inactive = false,
+--            transparent_mode = false, -- set true if you want transparent background
+--        },
+--        config = function(_, opts)
+--            require("gruvbox").setup(opts)
+--            vim.o.background = "dark"
+--            vim.cmd.colorscheme("gruvbox")
+--        end,
+--    },
+--}
 
 --return {
 --    {
