@@ -7,7 +7,7 @@ Item {
     id: root
     property bool expanded: false
     property bool hovered: mouse.hovered
-    property int cornerRadius: 20
+    property int cornerRadius: Theme.globalRadius
     property int expandedHeight: 200
     default property alias content: contentSlot.data
 
@@ -24,12 +24,12 @@ Item {
         visible: containerRectangle.height >= root.cornerRadius
         ShapePath {
             fillColor: Theme.background
-            strokeWidth: 1.5
+            strokeWidth: 2
             strokeColor: Theme.accent
-            startX: -root.cornerRadius; startY: 1.5
+            startX: -root.cornerRadius; startY: 2
             PathQuad {
                 x: -2; y: root.cornerRadius
-                controlX: -2; controlY: 1.5
+                controlX: -2; controlY: 2
             }
             PathLine { x: -2; y: containerRectangle.height - root.cornerRadius }
             PathQuad {
@@ -43,8 +43,8 @@ Item {
             }
             PathLine { x: containerRectangle.width + 2; y: root.cornerRadius }
             PathQuad {
-                x: containerRectangle.width + root.cornerRadius; y: 1.5
-                controlX: containerRectangle.width + 2; controlY: 1.5
+                x: containerRectangle.width + root.cornerRadius; y: 2
+                controlX: containerRectangle.width + 2; controlY: 2
             }
         }
     }
@@ -64,7 +64,7 @@ Item {
             NumberAnimation {
                 duration: root.expanded ? 350 : 300
                 easing.type: root.expanded ? Easing.InCubic : Easing.OutBack
-                easing.overshoot: 1.5
+                easing.overshoot: 2
             }
         }
 

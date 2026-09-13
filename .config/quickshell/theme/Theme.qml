@@ -89,5 +89,5 @@ QtObject {
     // OTHER PROPERTIES
     // --------------------
 
-    property int widgetRadius: 10
+    property int globalRadius: 20
 }

@@ -6,8 +6,8 @@ import qs.theme
 
 Item {
     id: root
-    width: parent.width
-    height: calendarColumn.implicitHeight
+    width: 200
+    height: 200
 
     property var now: new Date()
     property int displayYear: now.getFullYear()
@@ -21,7 +21,7 @@ Item {
         "May", "June", "July", "August",
         "September", "October", "November", "December"
     ]
-    readonly property var dayNames: ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"]
+    readonly property var dayNames: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
 
     ColumnLayout {
         id: calendarColumn
@@ -33,7 +33,7 @@ Item {
             Layout.fillWidth: true
 
             Text {
-                text: "󰔃"
+                text: ""
                 color: Theme.foreground
                 font.family: Theme.fontFamily
                 font.pixelSize: Theme.font.normal
@@ -67,7 +67,7 @@ Item {
             Item { Layout.fillWidth: true }
 
             Text {
-                text: "󰔄"
+                text: ""
                 color: Theme.foreground
                 font.family: Theme.fontFamily
                 font.pixelSize: Theme.font.normal
