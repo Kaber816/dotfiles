@@ -38,7 +38,7 @@ hl.monitor({
 
 hl.monitor({
     output   = "",
-    mode     = "preffered",
+    mode     = "preferred",
     position = "auto",
     scale    = "1",
 })
