@@ -64,18 +64,18 @@ Scope {
                     }
                 }
 
-                // TOP POPOUT LOGIC
+                // TOP POPOUT
                 TopCenterPopout {
                     id: topCenterPopout
                     anchors {
                         top: parent.top
-                        topMargin: barScope.topBarHeight - 2
+                        topMargin: barScope.topBarHeight //- 2
                         horizontalCenter: parent.horizontalCenter
                     }
                     expanded: centerHover.hovered || topCenterPopout.hovered
                 }
 
-                // - NETWORK POPOUT LOGIC
+                // - NETWORK POPOUT
                 property bool networkExpanded: false
 
                 Timer {

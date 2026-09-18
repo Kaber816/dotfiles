@@ -17,36 +17,44 @@ Item {
 
     HoverHandler { id: mouse }
 
+   // Shape {
+   //     id: inverseCorners
+   //     anchors.fill: containerRectangle
+   //     preferredRendererType: Shape.CurveRenderer
+   //     visible: containerRectangle.height >= root.cornerRadius
+   //     ShapePath {
+   //         fillColor: Theme.background
+   //         strokeWidth: 2
+   //         strokeColor: Theme.accent
+   //         startX: -root.cornerRadius; startY: 2
+   //         PathQuad {
+   //             x: -2; y: root.cornerRadius
+   //             controlX: -2; controlY: 2
+   //         }
+   //         PathLine { x: -2; y: containerRectangle.height - root.cornerRadius }
+   //         PathQuad {
+   //             x: root.cornerRadius; y: containerRectangle.height + 2
+   //             controlX: -2; controlY: containerRectangle.height + 2
+   //         }
+   //         PathLine { x: containerRectangle.width - root.cornerRadius; y: containerRectangle.height + 2 }
+   //         PathQuad {
+   //             x: containerRectangle.width + 2; y: containerRectangle.height - root.cornerRadius
+   //             controlX: containerRectangle.width + 2; controlY: containerRectangle.height + 2
+   //         }
+   //         PathLine { x: containerRectangle.width + 2; y: root.cornerRadius }
+   //         PathQuad {
+   //             x: containerRectangle.width + root.cornerRadius; y: 2
+   //             controlX: containerRectangle.width + 2; controlY: 2
+   //         }
+   //     }
+   // }
+
+   // NOTES: Can align shapepath with borders by drawing it at width - strokeWidth/2 or height - strokewidth/2 (perfectly centers on edge like a normal border does?)
     Shape {
         id: inverseCorners
         anchors.fill: containerRectangle
         preferredRendererType: Shape.CurveRenderer
         visible: containerRectangle.height >= root.cornerRadius
-        ShapePath {
-            fillColor: Theme.background
-            strokeWidth: 2
-            strokeColor: Theme.accent
-            startX: -root.cornerRadius; startY: 2
-            PathQuad {
-                x: -2; y: root.cornerRadius
-                controlX: -2; controlY: 2
-            }
-            PathLine { x: -2; y: containerRectangle.height - root.cornerRadius }
-            PathQuad {
-                x: root.cornerRadius; y: containerRectangle.height + 2
-                controlX: -2; controlY: containerRectangle.height + 2
-            }
-            PathLine { x: containerRectangle.width - root.cornerRadius; y: containerRectangle.height + 2 }
-            PathQuad {
-                x: containerRectangle.width + 2; y: containerRectangle.height - root.cornerRadius
-                controlX: containerRectangle.width + 2; controlY: containerRectangle.height + 2
-            }
-            PathLine { x: containerRectangle.width + 2; y: root.cornerRadius }
-            PathQuad {
-                x: containerRectangle.width + root.cornerRadius; y: 2
-                controlX: containerRectangle.width + 2; controlY: 2
-            }
-        }
     }
 
     Rectangle {
@@ -80,20 +88,20 @@ Item {
         }
     }
 
-    Shape {
-        id: outlineMask
-        anchors.fill: containerRectangle
-        preferredRendererType: Shape.CurveRenderer
-        visible: containerRectangle.height >= root.cornerRadius
-        ShapePath {
-            fillColor: Theme.background
-            strokeWidth: 0
-            strokeColor: Theme.background
-            startX: -root.cornerRadius; startY: 0
-            PathLine { x: containerRectangle.width + root.cornerRadius; y: 0 }
-            PathLine { x: containerRectangle.width - 5; y: 5 }
-            PathLine { x: 5; y: 5 }
-            PathLine { x: -root.cornerRadius; y: 0 }
-        }
-    }
+   // Shape {
+   //     id: outlineMask
+   //     anchors.fill: containerRectangle
+   //     preferredRendererType: Shape.CurveRenderer
+   //     visible: containerRectangle.height >= root.cornerRadius
+   //     ShapePath {
+   //         fillColor: Theme.background
+   //         strokeWidth: 0
+   //         strokeColor: Theme.background
+   //         startX: -root.cornerRadius; startY: 0
+   //         PathLine { x: containerRectangle.width + root.cornerRadius; y: 0 }
+   //         PathLine { x: containerRectangle.width - 5; y: 5 }
+   //         PathLine { x: 5; y: 5 }
+   //         PathLine { x: -root.cornerRadius; y: 0 }
+   //     }
+   // }
 }
