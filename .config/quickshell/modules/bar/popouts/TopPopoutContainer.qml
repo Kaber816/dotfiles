@@ -55,11 +55,40 @@ Item {
         anchors.fill: containerRectangle
         preferredRendererType: Shape.CurveRenderer
         visible: containerRectangle.height >= root.cornerRadius
+        ShapePath{
+            fillColor: Theme.background
+            strokeWidth: 2
+            strokeColor: Theme.accent
+            startX: -Theme.globalRadius
+            startY: Theme.halfOfStrokeWidth
+            //PathLine {x: -Theme.globalRadius; y: Theme.halfOfStrokeWidth }
+            PathQuad {
+                x: -Theme.halfOfStrokeWidth; y:Theme.globalRadius
+                controlX: -Theme.halfOfStrokeWidth; controlY: Theme.halfOfStrokeWidth
+            }
+            PathLine {x: -Theme.halfOfStrokeWidth; y:containerRectangle.height - Theme.globalRadius}
+            PathQuad {
+                x: Theme.globalRadius; y: containerRectangle.height + Theme.halfOfStrokeWidth
+                controlX: -Theme.halfOfStrokeWidth; controlY: containerRectangle.height + Theme.halfOfStrokeWidth
+            }
+            PathLine {x: containerRectangle.width - Theme.globalRadius; y: containerRectangle.height + Theme.halfOfStrokeWidth }
+            PathQuad {
+                x: containerRectangle.width + Theme.halfOfStrokeWidth; y: containerRectangle.height - Theme.globalRadius
+                controlX: containerRectangle.width + Theme.halfOfStrokeWidth; controlY: containerRectangle.height
+            }
+            PathLine {x: containerRectangle.width + Theme.halfOfStrokeWidth; y: Theme.globalRadius}
+            PathQuad {
+                x: containerRectangle.width + Theme.globalRadius; y: Theme.halfOfStrokeWidth
+                controlX: containerRectangle.width; controlY: Theme.halfOfStrokeWidth
+            }
+        }
+        
     }
 
     Rectangle {
         id: containerRectangle
         anchors.horizontalCenter: parent.horizontalCenter
+        anchors.top: parent.top
         radius: root.cornerRadius
         color: Theme.background
         border.color: "transparent"

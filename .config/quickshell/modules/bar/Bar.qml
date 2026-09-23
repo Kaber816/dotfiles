@@ -69,7 +69,7 @@ Scope {
                     id: topCenterPopout
                     anchors {
                         top: parent.top
-                        topMargin: barScope.topBarHeight //- 2
+                        topMargin: barScope.topBarHeight - (Theme.strokeWidth / 2)
                         horizontalCenter: parent.horizontalCenter
                     }
                     expanded: centerHover.hovered || topCenterPopout.hovered
@@ -89,7 +89,7 @@ Scope {
 
                     anchors {
                         top: parent.top
-                        topMargin: barScope.topBarHeight - 1.5
+                        topMargin: barScope.topBarHeight - (Theme.strokeWidth / 2)
                         right: parent.right
                         rightMargin: 65
                     }

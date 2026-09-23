@@ -90,4 +90,7 @@ QtObject {
     // --------------------
 
     property int globalRadius: 20
+    property int strokeWidth: 2
+    property int halfOfStrokeWidth: strokeWidth / 2
+    property int borderWidth: 12
 }
