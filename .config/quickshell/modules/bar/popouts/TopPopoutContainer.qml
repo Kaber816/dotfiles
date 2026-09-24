@@ -47,11 +47,34 @@ Item {
             PathLine {x: containerRectangle.width + Theme.halfOfStrokeWidth; y: Theme.globalRadius}
             PathQuad {
                 x: containerRectangle.width + Theme.globalRadius; y: Theme.halfOfStrokeWidth
-                controlX: containerRectangle.width; controlY: Theme.halfOfStrokeWidth
+                controlX: containerRectangle.width + Theme.halfOfStrokeWidth; controlY: Theme.halfOfStrokeWidth
             }
             PathLine {x: -Theme.globalRadius; y: Theme.halfOfStrokeWidth}
         }
         
+    }
+
+    Shape {
+        id: outlineMask
+        anchors.fill: containerRectangle
+        preferredRendererType: Shape.CurveRenderer
+        visible: containerRectangle.height >= root.cornerRadius
+        ShapePath {
+            fillColor: Theme.background
+            strokeWidth: Theme.strokeWidth
+            strokeColor: Theme.background
+            startX: Theme.halfOfStrokeWidth; startY: Theme.globalRadius
+            PathQuad {
+                x: -Theme.globalRadius; y: -Theme.halfOfStrokeWidth
+                controlX: Theme.halfOfStrokeWidth; controlY: -Theme.halfOfStrokeWidth
+            }
+            PathLine { x: containerRectangle.width + Theme.globalRadius; y: -Theme.halfOfStrokeWidth }
+            PathQuad {
+                x: containerRectangle.width - Theme.halfOfStrokeWidth; y: Theme.globalRadius
+                controlX: containerRectangle.width - Theme.halfOfStrokeWidth; controlY: -Theme.halfOfStrokeWidth
+            }
+            PathLine { x: Theme.halfOfStrokeWidth; y: Theme.globalRadius }
+        }
     }
 
     Rectangle {
@@ -83,29 +106,6 @@ Item {
                 margins: 12
             }
             height: childrenRect.height
-        }
-    }
-
-    Shape {
-        id: outlineMask
-        anchors.fill: containerRectangle
-        preferredRendererType: Shape.CurveRenderer
-        visible: containerRectangle.height >= root.cornerRadius
-        ShapePath {
-            fillColor: Theme.background
-            strokeWidth: Theme.strokeWidth
-            strokeColor: Theme.background
-            startX: Theme.halfOfStrokeWidth; startY: Theme.globalRadius
-            PathQuad {
-                x: -Theme.globalRadius; y: -Theme.halfOfStrokeWidth
-                controlX: Theme.halfOfStrokeWidth; controlY: -Theme.halfOfStrokeWidth
-            }
-            PathLine { x: containerRectangle.width + Theme.globalRadius; y: -Theme.halfOfStrokeWidth }
-            PathQuad {
-                x: containerRectangle.width - Theme.halfOfStrokeWidth; y: Theme.globalRadius
-                controlX: containerRectangle.width - Theme.halfOfStrokeWidth; controlY: -Theme.halfOfStrokeWidth
-            }
-            PathLine { x: Theme.halfOfStrokeWidth; y: Theme.globalRadius }
         }
     }
 }
