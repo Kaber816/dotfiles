@@ -22,7 +22,14 @@ Item {
         "September", "October", "November", "December"
     ]
     readonly property var dayNames: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
-
+    
+    Rectangle {
+        color: Theme.background
+        border.color: Theme.accent
+        border.width: Theme.strokeWidth
+        anchors.fill: parent
+        radius: Theme.globalRadius
+    
     ColumnLayout {
         id: calendarColumn
         width: parent.width
@@ -160,5 +167,6 @@ Item {
                 }
             }
         }
+    }
     }
 }

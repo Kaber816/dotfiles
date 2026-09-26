@@ -9,7 +9,7 @@ Item {
     property bool hovered: mouse.hovered
     property int cornerRadius: Theme.globalRadius
     property int expandedHeight: 200
-    default property alias content: contentSlot.data
+    default property alias content: contentSlot.data // Hides the contents when not expanded
 
     width: popoutWidth
     property int popoutWidth: 200
@@ -19,7 +19,7 @@ Item {
 
    // NOTES: Can align shapepath with borders by drawing it at width - strokeWidth/2 or height - strokewidth/2 (perfectly centers on edge like a normal border does?)
     Shape {
-        id: inverseCorners
+        id: popoutOutline 
         anchors.fill: containerRectangle
         preferredRendererType: Shape.CurveRenderer
         visible: containerRectangle.height >= root.cornerRadius

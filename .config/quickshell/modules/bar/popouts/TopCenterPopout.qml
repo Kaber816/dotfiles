@@ -10,6 +10,8 @@ TopPopoutContainer {
     expandedHeight: 400
     
     GridLayout{
-        CalendarWidget {}
+        CalendarWidget {
+            id: calendar
+        }
     }
 }
