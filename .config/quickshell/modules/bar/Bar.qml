@@ -32,7 +32,6 @@ Scope {
                 }
 
                 Background {}
-
             }
             
             // Popouts

@@ -13,6 +13,12 @@ Item {
     property int cornerRadius: Theme.globalRadius
     property int cornerCurveStart: borderWidth + cornerRadius
 
+    ScreencopyView {
+        id: screenCapture
+        anchors.fill: parent
+        //captureSource:
+    }
+
     Shape {
         id: bgShape
         anchors.fill: parent
