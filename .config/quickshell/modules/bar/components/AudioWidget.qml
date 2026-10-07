@@ -46,12 +46,22 @@ Item {
             }
         }
         
+        // Widest expected string for sizing
+        TextMetrics {
+            id: volumeMetrics 
+            font.family: Theme.fontFamily
+            font.pixelSize: Theme.font.normal
+            text: "100%"
+        }
+
         Text {
             text: Volume.isMuted ? "muted" : Volume.volumeLevel + "%"
             color: Theme.foreground
             font.family: Theme.fontFamily
             font.pixelSize: Theme.font.normal
             Layout.alignment: Qt.AlignVCenter
+            Layout.preferredWidth: volumeMetrics.width
+            horizontalAlignment: Text.AlignHCenter
         }
        
     }

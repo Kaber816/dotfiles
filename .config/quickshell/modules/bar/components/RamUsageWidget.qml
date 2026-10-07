@@ -31,18 +31,26 @@ RowLayout {
             color: Theme.foreground
             font.family: Theme.fontFamily
             font.pixelSize: Theme.font.normal
-            Layout.alignment: Qt.AlignVCenter
         }
 
     }
 
+    // Widest expected string for sizing
+    TextMetrics {
+        id: ramMetrics 
+        font.family: Theme.fontFamily
+        font.pixelSize: Theme.font.normal
+        text: "31.9GB"
+    }
 
     Text {
-        text: RamUsage.ramUsage + "GB"
+        text: RamUsage.ramUsage.toFixed(1) + "GB"
         color: Theme.foreground
         font.family: Theme.fontFamily
         font.pixelSize: Theme.font.normal
         Layout.alignment: Qt.AlignVCenter
+        Layout.preferredWidth: ramMetrics.width
+        horizontalAlignment: Text.AlignHCenter
     }
 }
 

@@ -10,8 +10,16 @@ TopPopoutContainer {
     expandedHeight: 400
     
     GridLayout{
+        anchors.centerIn: parent
+        rowSpacing: 10
+        columnSpacing: 35
+
         CalendarWidget {
             id: calendar
+        }
+
+        WeatherWidget {
+            id: weather
         }
     }
 }

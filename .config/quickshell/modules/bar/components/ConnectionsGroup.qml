@@ -6,9 +6,9 @@ import qs.theme
 Rectangle {
     id: root
     height: 35
+    implicitWidth: groupRow.implicitWidth + 30
     radius: height / 2
     color: Theme.backgroundSecondary
-    implicitWidth: groupRow.implicitWidth + 30
         
     property bool networkWidgetHovered : networkWidget.hovered
 

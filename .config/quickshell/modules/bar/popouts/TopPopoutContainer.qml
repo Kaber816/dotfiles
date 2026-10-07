@@ -22,7 +22,8 @@ Item {
         id: popoutOutline 
         anchors.fill: containerRectangle
         preferredRendererType: Shape.CurveRenderer
-        visible: containerRectangle.height >= root.cornerRadius
+        //visible: containerRectangle.height >= root.cornerRadius
+        opacity: containerRectangle.height >= root.cornerRadius ? 1: 0.01
         ShapePath{
             fillColor: Theme.background
             strokeWidth: 2
@@ -58,7 +59,8 @@ Item {
         id: outlineMask
         anchors.fill: containerRectangle
         preferredRendererType: Shape.CurveRenderer
-        visible: containerRectangle.height >= root.cornerRadius
+        //visible: containerRectangle.height >= root.cornerRadius
+        opacity: containerRectangle.height >= root.cornerRadius ? 1: 0.01
         ShapePath {
             fillColor: Theme.background
             strokeWidth: Theme.strokeWidth

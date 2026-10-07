@@ -21,8 +21,10 @@ Scope {
             PanelWindow {
                 screen: barScope.modelData
                 color: "transparent"
-                WlrLayershell.layer: WlrLayer.Bottom
+                WlrLayershell.layer: WlrLayer.Top
                 WlrLayershell.exclusionMode: ExclusionMode.Ignore
+                
+                mask: Region{} // lets clicks pass straight through
 
                 anchors {
                     top: true
@@ -39,14 +41,14 @@ Scope {
                 id: popoutWindow
                 screen: barScope.modelData
                 color: "transparent"
-                WlrLayershell.layer: WlrLayer.Top
+                WlrLayershell.layer: WlrLayer.Overlay
                 WlrLayershell.exclusionMode: ExclusionMode.Ignore
 
+                implicitHeight: barScope.topBarHeight + 600
                 anchors {
                     top: true
                     left: true
                     right: true
-                    bottom: true
                 }
 
                 mask: Region {

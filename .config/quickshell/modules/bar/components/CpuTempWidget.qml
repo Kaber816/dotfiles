@@ -41,6 +41,13 @@ RowLayout {
 
     }
 
+    // Widest expected string for sizing
+    TextMetrics {
+        id: tempMetrics
+        font.family: Theme.fontFamily
+        font.pixelSize: Theme.font.normal
+        text: "100°C"
+    }
 
     Text {
         text: CpuTemp.cpuTemp + "°C"
@@ -48,5 +55,7 @@ RowLayout {
         font.family: Theme.fontFamily
         font.pixelSize: Theme.font.normal
         Layout.alignment: Qt.AlignVCenter
+        Layout.preferredWidth: tempMetrics.width
+        horizontalAlignment: Text.AlignHCenter
     }
 }

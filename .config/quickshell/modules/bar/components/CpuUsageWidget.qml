@@ -31,11 +31,17 @@ RowLayout {
             color: Theme.foreground
             font.family: Theme.fontFamily
             font.pixelSize: Theme.font.normal
-            Layout.alignment: Qt.AlignVCenter
         }
 
     }
 
+    // Widest expected string for sizing
+    TextMetrics {
+        id: usageMetrics
+        font.family: Theme.fontFamily
+        font.pixelSize: Theme.font.normal
+        text: "100%"
+    }
 
     Text {
         text: CpuUsage.cpuUsage + "%"
@@ -43,5 +49,7 @@ RowLayout {
         font.family: Theme.fontFamily
         font.pixelSize: Theme.font.normal
         Layout.alignment: Qt.AlignVCenter
+        Layout.preferredWidth: usageMetrics.width
+        horizontalAlignment: Text.AlignHCenter
     }
 }
