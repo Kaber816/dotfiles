@@ -1,23 +1,14 @@
-import Quickshell
 import QtQuick
 import QtQuick.Shapes
-import Quickshell.Wayland
+import qs.modules.bar
 import qs.theme
 
 Item {
     id: root
     anchors.fill: parent
 
-    property int topBarHeight: 45
-    property int borderWidth: 12
-    property int cornerRadius: Theme.globalRadius
-    property int cornerCurveStart: borderWidth + cornerRadius
-
-    ScreencopyView {
-        id: screenCapture
-        anchors.fill: parent
-        //captureSource:
-    }
+    property int cornerRadius: BarSettings.radius
+    property int cornerCurveStart: BarSettings.screenBorderWidth + cornerRadius
 
     Shape {
         id: bgShape
@@ -25,7 +16,6 @@ Item {
         preferredRendererType: Shape.CurveRenderer
 
         ShapePath {
-            //fillColor: Qt.alpha(Theme.background, 0.90)
             fillColor: Theme.background
             strokeWidth: 0
             strokeColor: "transparent"
@@ -38,35 +28,35 @@ Item {
             PathLine { x: 0; y: root.parent.height }
             PathLine { x: 0; y: 0 }
 
-            PathMove { x: root.cornerCurveStart; y: root.topBarHeight }
+            PathMove { x: root.cornerCurveStart; y: BarSettings.topBarHeight }
 
-            PathLine { x: root.parent.width - root.cornerCurveStart; y: root.topBarHeight }
+            PathLine { x: root.parent.width - root.cornerCurveStart; y: BarSettings.topBarHeight }
             PathQuad {
-                x: root.parent.width - root.borderWidth
-                y: root.topBarHeight + root.cornerRadius
-                controlX: root.parent.width - root.borderWidth
-                controlY: root.topBarHeight
+                x: root.parent.width - BarSettings.screenBorderWidth
+                y: BarSettings.topBarHeight + root.cornerRadius
+                controlX: root.parent.width - BarSettings.screenBorderWidth
+                controlY: BarSettings.topBarHeight
             }
-            PathLine { x: root.parent.width - root.borderWidth; y: root.parent.height - cornerCurveStart }
+            PathLine { x: root.parent.width - BarSettings.screenBorderWidth; y: root.parent.height - cornerCurveStart }
             PathQuad {
                 x: root.parent.width - root.cornerCurveStart
-                y: root.parent.height - root.borderWidth
-                controlX: root.parent.width - root.borderWidth
-                controlY: root.parent.height - root.borderWidth
+                y: root.parent.height - BarSettings.screenBorderWidth
+                controlX: root.parent.width - BarSettings.screenBorderWidth
+                controlY: root.parent.height - BarSettings.screenBorderWidth
             }
-            PathLine { x: root.cornerCurveStart; y: root.parent.height - root.borderWidth }
+            PathLine { x: root.cornerCurveStart; y: root.parent.height - BarSettings.screenBorderWidth }
             PathQuad {
-                x: root.borderWidth
+                x: BarSettings.screenBorderWidth
                 y: root.parent.height - root.cornerCurveStart
-                controlX: root.borderWidth
-                controlY: root.parent.height - root.borderWidth
+                controlX: BarSettings.screenBorderWidth
+                controlY: root.parent.height - BarSettings.screenBorderWidth
             }
-            PathLine { x: root.borderWidth; y: root.topBarHeight + root.cornerRadius }
+            PathLine { x: BarSettings.screenBorderWidth; y: BarSettings.topBarHeight + root.cornerRadius }
             PathQuad {
                 x: root.cornerCurveStart
-                y: root.topBarHeight
-                controlX: root.borderWidth
-                controlY: root.topBarHeight
+                y: BarSettings.topBarHeight
+                controlX: BarSettings.screenBorderWidth
+                controlY: BarSettings.topBarHeight
             }
         }
         
@@ -77,35 +67,35 @@ Item {
             strokeColor: Theme.accent
 
             startX: root.cornerCurveStart
-            startY: root.topBarHeight
+            startY: BarSettings.topBarHeight
 
-            PathLine { x: root.parent.width - root.cornerCurveStart; y: root.topBarHeight }
+            PathLine { x: root.parent.width - root.cornerCurveStart; y: BarSettings.topBarHeight }
             PathQuad {
-                x: root.parent.width - root.borderWidth
-                y: root.topBarHeight + root.cornerRadius
-                controlX: root.parent.width - root.borderWidth
-                controlY: root.topBarHeight
+                x: root.parent.width - BarSettings.screenBorderWidth
+                y: BarSettings.topBarHeight + root.cornerRadius
+                controlX: root.parent.width - BarSettings.screenBorderWidth
+                controlY: BarSettings.topBarHeight
             }
-            PathLine { x: root.parent.width - root.borderWidth; y: root.parent.height - root.cornerCurveStart }
+            PathLine { x: root.parent.width - BarSettings.screenBorderWidth; y: root.parent.height - root.cornerCurveStart }
             PathQuad {
                 x: root.parent.width - root.cornerCurveStart
-                y: root.parent.height - root.borderWidth
-                controlX: root.parent.width - root.borderWidth
-                controlY: root.parent.height - root.borderWidth
+                y: root.parent.height - BarSettings.screenBorderWidth
+                controlX: root.parent.width - BarSettings.screenBorderWidth
+                controlY: root.parent.height - BarSettings.screenBorderWidth
             }
-            PathLine { x: root.cornerCurveStart; y: root.parent.height - root.borderWidth }
+            PathLine { x: root.cornerCurveStart; y: root.parent.height - BarSettings.screenBorderWidth }
             PathQuad {
-                x: root.borderWidth
+                x: BarSettings.screenBorderWidth
                 y: root.parent.height - root.cornerCurveStart
-                controlX: root.borderWidth
-                controlY: root.parent.height - root.borderWidth
+                controlX: BarSettings.screenBorderWidth
+                controlY: root.parent.height - BarSettings.screenBorderWidth
             }
-            PathLine { x: root.borderWidth; y: root.topBarHeight + root.cornerRadius }
+            PathLine { x: BarSettings.screenBorderWidth; y: BarSettings.topBarHeight + root.cornerRadius }
             PathQuad {
                 x: root.cornerCurveStart
-                y: root.topBarHeight
-                controlX: root.borderWidth
-                controlY: root.topBarHeight
+                y: BarSettings.topBarHeight
+                controlX: BarSettings.screenBorderWidth
+                controlY: BarSettings.topBarHeight
             }
         }
 

@@ -10,31 +10,13 @@ import qs.theme
 Scope {
     id: root
     Variants {
-        model: Quickshell.screens
-
-        Scope {
+        model: Quickshell.screens 
+        Scope { // Gives each screen its own bar instance
             id: barScope
-            required property ShellScreen modelData //Each model screen that we iterate over
+            required property ShellScreen modelData // Each model screen that we iterate over
 
-            // Background
-            PanelWindow {
-                screen: barScope.modelData
-                color: "transparent"
-                WlrLayershell.layer: WlrLayer.Top
-                WlrLayershell.exclusionMode: ExclusionMode.Ignore
-                
-                mask: Region{} // lets clicks pass straight through
+            BackgroundWindow {} // Border that goes around the entire screen
 
-                anchors {
-                    top: true
-                    left: true
-                    right: true
-                    bottom: true
-                }
-
-                Background {}
-            }
-            
             // Popouts
             PanelWindow {
                 id: popoutWindow
