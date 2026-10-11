@@ -46,7 +46,7 @@ TopPopoutContainer {
             }
 
             Repeater {
-                model: root.wifiDevice.networks
+                model: root.wifiDevice ? root.wifiDevice.networks : null
 
                 Column {
                     id: wifiNetworksCol

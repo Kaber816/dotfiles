@@ -105,9 +105,9 @@ Item {
                 top: parent.top
                 left: parent.left
                 right: parent.right
+                bottom: parent.bottom
                 margins: 12
             }
-            height: childrenRect.height
         }
     }
 }
