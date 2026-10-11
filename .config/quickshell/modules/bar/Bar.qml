@@ -2,6 +2,7 @@ import Quickshell
 import QtQuick
 import QtQuick.Layouts
 import Quickshell.Wayland
+import qs.modules.bar
 import qs.modules.bar.components
 import qs.modules.bar.popouts
 import qs.theme
@@ -13,9 +14,7 @@ Scope {
 
         Scope {
             id: barScope
-            required property ShellScreen modelData
-            property int borderWidth: 12
-            property int topBarHeight: 45
+            required property ShellScreen modelData //Each model screen that we iterate over
 
             // Background
             PanelWindow {
@@ -44,7 +43,7 @@ Scope {
                 WlrLayershell.layer: WlrLayer.Overlay
                 WlrLayershell.exclusionMode: ExclusionMode.Ignore
 
-                implicitHeight: barScope.topBarHeight + 600
+                implicitHeight: BarSettings.topBarHeight + 600
                 anchors {
                     top: true
                     left: true
@@ -70,7 +69,7 @@ Scope {
                     id: topCenterPopout
                     anchors {
                         top: parent.top
-                        topMargin: barScope.topBarHeight - (Theme.strokeWidth / 2)
+                        topMargin: BarSettings.topBarHeight - (Theme.strokeWidth / 2)
                         horizontalCenter: parent.horizontalCenter
                     }
                     expanded: centerHover.hovered || topCenterPopout.hovered
@@ -90,7 +89,7 @@ Scope {
 
                     anchors {
                         top: parent.top
-                        topMargin: barScope.topBarHeight - (Theme.strokeWidth / 2)
+                        topMargin: BarSettings.topBarHeight - (Theme.strokeWidth / 2)
                         right: parent.right
                         rightMargin: 65
                     }
@@ -113,7 +112,7 @@ Scope {
             PanelWindow {
                 screen: barScope.modelData
                 color: "transparent"
-                implicitHeight: barScope.topBarHeight
+                implicitHeight: BarSettings.topBarHeight
                 WlrLayershell.layer: WlrLayer.Top
                 anchors {
                     top: true
@@ -190,7 +189,7 @@ Scope {
             PanelWindow {
                 screen: barScope.modelData
                 color: "transparent"
-                implicitWidth: barScope.borderWidth
+                implicitWidth: BarSettings.screenBorderWidth
                 WlrLayershell.layer: WlrLayer.Top
                 anchors {
                     top: true
@@ -203,7 +202,7 @@ Scope {
             PanelWindow {
                 screen: barScope.modelData
                 color: "transparent"
-                implicitWidth: barScope.borderWidth
+                implicitWidth: BarSettings.screenBorderWidth
                 WlrLayershell.layer: WlrLayer.Top
                 anchors {
                     top: true
@@ -216,7 +215,7 @@ Scope {
             PanelWindow {
                 screen: barScope.modelData
                 color: "transparent"
-                implicitHeight: barScope.borderWidth
+                implicitHeight: BarSettings.screenBorderWidth
                 WlrLayershell.layer: WlrLayer.Top
                 anchors {
                     bottom: true
