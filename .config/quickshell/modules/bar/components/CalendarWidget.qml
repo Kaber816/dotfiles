@@ -24,10 +24,8 @@ Item {
     readonly property var dayNames: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
     
     Rectangle {
-        //color: Theme.background
-        //border.color: Theme.accent
-        color: Qt.alpha(Theme.accent, 0.2)
-        border.color: "transparent"
+        border.color: Theme.accent
+        color: Qt.alpha(Theme.accent, 0.05)
         border.width: Theme.strokeWidth
         anchors.fill: parent
         radius: Theme.globalRadius

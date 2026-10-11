@@ -11,13 +11,23 @@ Item {
     height: 250
 
     Rectangle {
-        //color: Theme.background
-        //border.color: Theme.accent
-        color: Qt.alpha(Theme.accent, 0.2)
-        border.color: "transparent"
+        border.color: Theme.accent
+        color: Qt.alpha(Theme.accent, 0.05)
         border.width: Theme.strokeWidth
         anchors.fill: parent
         radius: Theme.globalRadius
+        clip: true
+
+        //Rectangle {
+        //    color: Theme.background
+        //    border.color: "transparent"
+        //    border.width:0
+        //    anchors.verticalCenter: parent.bottom
+        //    anchors.horizontalCenter: parent.horizontalCenter
+        //    width: parent.width
+        //    height: parent.height
+        //    radius: 250
+        //}
 
         Text {
             anchors.centerIn:parent
