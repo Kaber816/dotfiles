@@ -4,7 +4,6 @@ import Quickshell.Wayland
 import qs.modules.bar.components
 
 PanelWindow {
-    screen: barScope.modelData
     color: "transparent"
     WlrLayershell.layer: WlrLayer.Top
     WlrLayershell.exclusionMode: ExclusionMode.Ignore

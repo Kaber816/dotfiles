@@ -1,17 +1,32 @@
+import Quickshell 
 import QtQuick
 import QtQuick.Layouts
+import Quickshell.Wayland
+import qs.modules.bar
 import qs.modules.bar.components
+import qs.modules.bar.popouts
 import qs.theme
 
-Item {
-signal centerHovered(bool isHovered)
+PanelWindow {
+
+    id: statusBarWindow 
+    readonly property bool centerHovered: centerHover.hovered
+    readonly property bool networkHovered: connectionsGroup.networkWidgetHovered 
+
+    color: "transparent"
+    implicitHeight: BarSettings.topBarHeight
+    WlrLayershell.layer: WlrLayer.Top
+    anchors { top: true; left: true; right: true }
+
     RowLayout {
-        id: topBarRow
+        id: rowLayout 
         anchors.fill: parent
         anchors.leftMargin: 20
         anchors.rightMargin: 20
 
-        // Left item
+        // ============================================================
+        //  LEFT SIDE 
+        // ============================================================
         Item {
             Layout.fillWidth: true
             Layout.fillHeight: true
@@ -22,14 +37,15 @@ signal centerHovered(bool isHovered)
             }
         }
 
-        // Center item — hover here triggers the popout
+        // ============================================================
+        //  CENTER 
+        // ============================================================
         Item {
             Layout.fillWidth: true
             Layout.fillHeight: true
 
             HoverHandler {
                 id: centerHover
-                onHoveredChanged: root.itemHovered(centerHover.hovered)
             }
 
             ClockWidget {
@@ -37,7 +53,9 @@ signal centerHovered(bool isHovered)
             }
         }
 
-        // Right item
+        // ============================================================
+        //  RIGHT SIDE
+        // ============================================================
         Item {
             Layout.fillWidth: true
             Layout.fillHeight: true
@@ -49,14 +67,6 @@ signal centerHovered(bool isHovered)
 
                 ConnectionsGroup {
                     id: connectionsGroup
-                    onNetworkWidgetHoveredChanged: {
-                        if (connectionsGroup.networkWidgetHovered) {
-                            networkCloseTimer.stop()
-                            popoutWindow.networkExpanded = true
-                        } else {
-                            networkCloseTimer.restart()
-                        }
-                    }
                 }
 
                 // Arch logo
