@@ -11,20 +11,18 @@ Scope {
     id: root
     Variants {
         model: Quickshell.screens 
-        Scope { // Gives each screen its own bar instance
+        Scope {
             id: barScope
-            required property ShellScreen modelData // Each model screen that we iterate over
+            required property ShellScreen modelData
 
-            BackgroundWindow { screen: barScope.modelData } // Border that goes around the entire screen
+            BackgroundWindow { screen: barScope.modelData }
 
-            // Visual popouts on screen
             PopoutsWindow { 
                 screen: barScope.modelData; 
                 centerHovered: bar.centerHovered 
                 networkHovered: bar.networkHovered
             }
 
-            // Top bar reservation and contents
             StatusBarWindow { 
                 id: bar;
                 screen: barScope.modelData

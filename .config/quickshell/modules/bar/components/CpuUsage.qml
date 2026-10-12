@@ -5,14 +5,15 @@ import Quickshell.Io
 
 Singleton {
     id: root
-    property real cpuUsage: 0
+    property string cpuUsage: "0.0"
 
     Process {
         id: cpuProcess
-        command: ["sh", "-c", "top -bn1 | grep 'Cpu(s)' | awk '{print $2}'"]
+        command: ["sh", "-c", "LC_ALL=C top -bn2 -d 0.5 | grep 'Cpu(s)' | tail -1 | sed 's/.*, *\\([0-9.]*\\) id.*/\\1/'"]
         stdout: SplitParser {
             onRead: data => {
-                root.cpuUsage = Math.round(parseFloat(data.trim()))
+                const usage = 100 - parseFloat(data.trim())
+                root.cpuUsage = usage < 10 ? usage.toFixed(1) : Math.round(usage).toString()
             }
         }
     }
