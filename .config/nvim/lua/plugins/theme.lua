@@ -19,7 +19,6 @@ return {
         end,
     },
 }
-
 --return {
 --    {
 --        "ellisonleao/gruvbox.nvim",
